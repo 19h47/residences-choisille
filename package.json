@@ -1,0 +1,32 @@
+{
+	"name": "residences-choisille",
+	"version": "1.0.0",
+	"description": "Résidences Choisille coming soon page",
+	"main": "index.js",
+	"scripts": {
+		"build-task:scss-compile": "./bin/scss-compile",
+		"build-task:autoprefixer": "./bin/autoprefixer",
+		"sass:build": "./bin/build",
+		"sass:watch": "./bin/watch",
+		"dev": "./bin/dev"
+	},
+	"keywords": [
+		"node",
+		"sass",
+		"scss",
+		"npm"
+	],
+	"author": "Jérémy Levron <levronjeremy@19h47.fr> (http://19h47.fr/)",
+	"license": "ISC",
+	"devDependencies": {
+		"autoprefixer": "^7.1.2",
+		"bootstrap-sass": "^3.3.7",
+		"breakpoint-sass": "^2.7.1",
+		"breakpoint-slicer": "^2.0.0",
+		"chokidar-cli": "^1.2.0",
+		"node-sass-chokidar": "0.0.3",
+		"npm-run-all": "^4.0.2",
+		"postcss-cli": "^4.1.0",
+		"ress": "^1.2.2"
+	}
+}

@@ -1,0 +1,94 @@
+/**
+ * Paddings classes
+ */
+@if ( $import-utilities-paddings == true ) {
+
+    // If Slicer breakpoint is instanciate
+    @if ( $slicer-breakpoints-settings == true ) {
+
+        // Loop through each breakpoint
+        @each $breakpoint in $slicer-breakpoint-names {
+
+            
+            // Create breakpoint "from" statement
+            @include from( $breakpoint ) {
+                
+                // For each property find in $padding-properties
+                @each $padding-property in $padding-properties {
+
+                    // Construct each class for each breakpoint
+                    
+                    @each $padding-value in $padding-values {
+
+                        /**
+                         * Padding auto
+                         */
+                        %padding-#{ unquote( $breakpoint ) }-0-auto {
+                            padding: 0 auto;
+                        }
+
+                        .padding-#{ unquote( $breakpoint ) }-0-auto {
+                            @extend %padding-#{ unquote( $breakpoint ) }-0-auto;
+                        }
+                        
+                        /**
+                         * All properties
+                         */
+                        %padding-#{ unquote( $breakpoint ) }-#{ $padding-value } {
+                            
+                            padding: ( $padding-value / $base-font-size ) * 1em;
+                        }
+
+                        .padding-#{ unquote( $breakpoint ) }-#{ $padding-value } {
+                            
+                            @extend %padding-#{ unquote( $breakpoint ) }-#{ $padding-value };
+                        }
+
+                        
+                        /**
+                         * For each properties
+                         */
+                        %padding-#{ unquote( $breakpoint ) }-#{ unquote( $padding-property ) }-#{ $padding-value } {
+                            
+                            padding-#{ unquote( $padding-property ) }: ( $padding-value / $base-font-size ) * 1em;
+                        }
+
+                        .padding-#{ unquote( $breakpoint ) }-#{ unquote( $padding-property ) }-#{ $padding-value } {
+                            
+                            @extend %padding-#{ unquote( $breakpoint ) }-#{ unquote( $padding-property ) }-#{ $padding-value };
+                        }
+
+
+                        /**
+                         * x
+                         * right and left properties
+                         */
+                        %padding-#{ unquote( $breakpoint ) }-x-#{ $padding-value } {
+                            @include margin(
+                                right ( $padding-value / $base-font-size ) * 1em
+                                left ( $padding-value / $base-font-size ) * 1em
+                            );
+                        }
+                        .padding-#{ unquote( $breakpoint ) }-x-#{ $padding-value } {
+                            @extend %padding-#{ unquote( $breakpoint ) }-x-#{ $padding-value };
+                        }
+
+                        /**
+                         * y
+                         * top and bottom properties
+                         */
+                        %padding-#{ unquote( $breakpoint ) }-y-#{ $padding-value } {
+                            @include padding(
+                                top ( $padding-value / $base-font-size ) * 1em
+                                bottom ( $padding-value / $base-font-size ) * 1em
+                            );
+                        }
+                        .padding-#{ unquote( $breakpoint ) }-y-#{ $padding-value } {
+                            @extend %padding-#{ unquote( $breakpoint ) }-y-#{ $padding-value };
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

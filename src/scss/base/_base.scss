@@ -1,0 +1,131 @@
+/**
+ * Base
+ */
+
+html {
+    @include size( 100% );
+}
+
+body {
+    
+    background: {
+        color: the_color( cyan, very-dark-desaturated );
+        image: url( '#{ map-get( $directories, png ) }background.png' );
+        position: center;
+        size: cover;
+    }
+}
+
+a, 
+button {
+    cursor: pointer;
+    outline: none;
+}
+
+a {
+    color: currentColor;
+    text-decoration: none;
+}
+
+i {
+    @extend %font-style-normal!optional;
+}
+
+b, 
+strong {
+    font-weight: map-get( map-get( $font, weights ), medium );
+}
+
+p {
+    @include margin ( 
+        top ( ( $base-line-height / $base-font-size ) * 1em ) 
+        bottom ( ( ( $base-line-height / $base-font-size ) / 2 ) * 1em )
+    );
+    
+    font-size: 1em;
+    line-height: ( ( $base-line-height / $base-font-size ) * 1em );
+}
+
+ul,
+ol {
+    @include margin ( 
+        top ( ( $base-line-height / $base-font-size ) * 1em ) 
+        right 0
+        bottom ( ( ( $base-line-height / $base-font-size ) / 2 ) * 1em )
+        left 0
+    );
+    @include padding ( 
+        top 0 
+        right 0 
+        bottom 0 
+        left ( ( $base-line-height / $base-font-size ) * 1em ) 
+    );
+}
+
+ul {
+    // list-style-type: none;
+}
+
+li {
+    @include margin ( 
+        top ( ( ( $base-line-height / $base-font-size ) / 2 ) * 1em )
+        right 0 
+        bottom ( ( ( $base-line-height / $base-font-size ) / 4 ) * 1em )
+        left 0 
+    );
+}
+
+hr {
+    @extend %margin-xs-0;
+    
+    border: 0;
+}
+
+em {
+
+    font: 
+    {
+        style: italic;
+    }
+}
+
+iframe {
+    border: 0;
+}
+
+blockquote {
+    // Extend class
+    @extend .font-title, .font-regular; 
+
+    // Include margin
+    @include margin ( 
+        top ( ( $base-line-height / $base-font-size ) * 1em )
+        right 0 
+        bottom ( ( ( $base-line-height / $base-font-size ) / 2 ) * 1em )
+        left 0 
+    );
+
+    // Include padding
+    @include padding ( 
+        top 20px 
+        left ( $grid-outer-gutter-width * 2 ) 
+        bottom 20px 
+    );
+
+    border: {
+        left: {
+            color: currentColor;
+            style: solid;
+            width: 10px;
+        }
+    }
+
+    p {
+        @extend %margin-xs-0;
+    }
+}
+
+[disabled],
+a.disabled {
+    pointer-events: none;
+}

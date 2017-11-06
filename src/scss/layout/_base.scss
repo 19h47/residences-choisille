@@ -1,0 +1,135 @@
+.site {
+
+	/**
+	 * Site container
+	 *
+	 * The fluid container of the grid
+	 * 
+	 * @uses .site-container
+	 */
+	&-container {
+		@extend %position-xs-relative;
+		
+		@include padding( 
+			right $grid-outer-gutter-width 
+			left $grid-outer-gutter-width
+		);
+		@include margin( top 0 right auto bottom 0 left auto );
+		
+		max-width: $container-width;
+	}
+
+
+	/**
+	 * Site wrapper
+	 *
+	 * @uses .site-wrapper
+	 */
+	&-wrapper {
+		@extend %position-xs-relative;
+		@include padding( top $grid-outer-gutter-width );
+
+		min-height: calc( 100vh - 40px );
+	}
+
+
+	/**
+	 * Footer
+	 *
+	 * @uses .site-footer
+	 */
+	&-footer {
+		// @include absolute( right 0 bottom 0 left 0 );
+
+		min-height: 40px;
+		background: {
+			color: the_color( cyan, very-dark-desaturated );
+		}
+
+		p {
+			@extend %margin-xs-0;
+
+			color: the_color( white );
+			font: {
+				family: 'Coco Gothic', sans-serif;
+				size: 16px;
+				style: italic;
+			}
+			line-height: 40px;
+		}
+	}
+
+}
+
+
+.mail {
+	@extend %margin-xs-bottom-0;
+	color: the_color( white );
+	font: {
+		family: 'Coco Gothic', sans-serif;
+		size: 16px;
+		weight: map-get( map-get( $font, weights ), regular );
+	}
+	line-height: ( 22 / 16 );
+}
+
+.phone-number {
+	@extend %margin-xs-0;
+	@include letter-spacing( 100 );
+
+	color: the_color( orange, slightly-desaturated );
+	font: {
+		family: 'Coco Gothic', sans-serif;
+		size: 24px;
+		weight: map-get( map-get( $font, weights ), regular );
+	}
+}
+
+.title {
+	color: the_color( white );
+	font: {
+		family: 'Coco Gothic', sans-serif;
+	}
+
+	strong {
+		font: {
+			weight: map-get( map-get( $font, weights ), bold );
+		}
+	}
+
+	&:nth-child( 1 ) {
+		@extend %margin-xs-bottom-0;
+		@include margin( top 150px );
+		font: {
+			size: 30px;
+		}
+	}
+	&:nth-child( 2 ) {
+		@extend %margin-xs-0;
+		font: {
+			// size: 45px;
+			weight: map-get( map-get( $font, weights ), bold );
+		}
+
+		@include responsive-font( ( ( ( 45 * 100 ) / $psd-width-unitless ) * 1vw ), 30px, 45px );
+	}
+	&:nth-child( 3 ) {
+		@extend %margin-xs-top-0;
+	}
+}
+
+.button {
+	@extend %uppercase, %display-xs-inline-block;
+	@include padding( top 10px right 10px bottom 10px left 10px );
+	@include margin( bottom 150px );
+
+	font: {
+		family: 'Coco Gothic', sans-serif;
+		size: 24px;
+		weight: map-get( map-get( $font, weights ), light );
+	}
+	color: the_color( cyan, very-dark-desaturated );
+	background: {
+		color: the_color( orange, slightly-desaturated );
+	}
+}

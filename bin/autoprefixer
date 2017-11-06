@@ -1,0 +1,1 @@
+postcss dist/css/*.css --use autoprefixer -d dist/css/

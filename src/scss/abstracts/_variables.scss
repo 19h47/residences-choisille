@@ -1,0 +1,223 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+/**
+ * Color variation
+ *
+ * Each colors used in the theme.
+ * 
+ * @uses get_color($key, $value) to retrieve color value
+ * @type nested map
+ * @see http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
+ * @see http://www.colorhexa.com/ to pickup color name
+ * @author Jérémy Levron levronjeremy@19h47.fr
+ */
+$color-variations: (
+	black: #000000,
+	white: #ffffff,
+
+	blue: (	
+		pure: #0075e3,
+		light-grayish: #ccd2d9
+	),
+
+	red: (
+		strong: #ff0000,
+		bright: #f15847
+	),
+
+	orange: (
+		slightly-desaturated: #bb9666
+	),
+
+	 gray: (
+	 	very-dark: #2b2b2b,
+	),
+
+	 cyan: (
+	 	very-dark-desaturated: #243835,
+	 ),
+	
+	social: (
+		/**
+		 * Brand colors
+		 *
+		 * @see https://brandcolors.net/
+		 */
+		facebook: #3b5998, 
+		twitter: #1da1f2,
+		google-plus: #dd4b39,
+		linkedin: #0077b5,
+		mail: #000000,
+	)
+);
+
+
+/**
+ * Font
+ *
+ * A map containing all information about fonts
+ * 
+ * @type map
+ */
+$font: (
+	/**
+	 * Font
+	 *
+	 * All fonts found in the site are listed here
+	 *
+	 * @uses map-get( $font, $key ) to retrieve font value from map
+	 * @type map
+	 */
+	families: (
+		body: ( 'Lora', sans-serif ),
+		title: ( 'Poppins', sans-serif ),
+	),
+
+
+	/**
+	 * Font weight
+	 *
+	 * Each font weight used in the theme.
+	 * 
+	 * @uses map-get( $font-weight, $key ) to retrieve font weight value
+	 * @type map
+	 * @author Jérémy Levron levronjeremy@19h47.fr
+	 */
+	weights: (
+		extralight: 100,
+		light: 200,
+		book: 300,
+		regular: 400,
+		medium: 500,
+		semibold: 600,
+		bold: 700,
+		extrabold: 800,
+		extrablack: 900
+	)
+);
+
+
+/**
+ * Base
+ */
+$base-font-size: 16;
+$base-font-size-px: $base-font-size * 1px;
+$base-line-height: 29;
+
+
+
+// Layout ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+$grid-columns: 12;
+
+
+/**
+ * Gutter width
+ * 
+ * Overall grid gutter size from Bootstrap
+ * 
+ * @see http://stackoverflow.com/a/28193872/5091221
+ */
+$grid-gutter-width: 30px;
+
+
+/**
+ * Outer gutter width
+ *
+ * (Most of the time it's the size of a gutter divide by 2.)
+ * Useful for the container.
+ */
+$grid-outer-gutter-width-unitless: 70;
+$grid-outer-gutter-width: $grid-outer-gutter-width-unitless * 1px;
+
+
+/**
+ * Prototype width
+ *
+ * From .psd obviously
+ */
+$psd-width-unitless: 1024;
+$psd-width: $psd-width-unitless * 1px;
+
+
+/**
+ * Container width without grid outer gutter width
+ * 
+ * Width keep from .psd
+ */
+$container-width-without-outer-gutter-unitless: 1024;
+$container-width: $container-width-without-outer-gutter-unitless * 1px;
+
+
+/**
+ * Container width
+ * 
+ * Width keep from .psd (grid + outer gutter * 2 )
+ */
+$container-width-unitless: $container-width-without-outer-gutter-unitless + ( $grid-outer-gutter-width-unitless * 2 );
+$container-width: $container-width-unitless * 1px;
+
+
+/**
+ * Transitions
+ *
+ * @uses map-get( $transitions, $key ) to retrieve directory value from map
+ * @type map
+ * @author Jérémy Levron <levronjeremy@19h47.fr>
+ * @see http://easings.net/
+ */
+$transitions: (
+	ease: .3s ease,
+	zoom-in: 1s cubic-bezier( 0.25, 0.46, 0.45, 0.94 ),
+);
+
+/**
+ * Directories
+ *
+ * Each directories used in this theme.
+ * 
+ * @uses map-get( $directories, $key ) to retrieve directory value from map
+ * @type map
+ * @author Jérémy Levron levronjeremy@19h47.fr
+ */
+$directories: (
+	fonts: "../../fonts/",
+	img: "../../img/",
+	svg: "../../img/svg/",
+	jpg: "../../img/jpg/",
+	png: "../../img/png/",
+	gif: "../../img/gif/",
+);
+
+
+/**
+ * Breakpoint slicer
+ *
+ * @see https://github.com/lolmaus/breakpoint-slicer
+ */
+$slicer-breakpoints-settings: true;
+@if ($slicer-breakpoints-settings == true) {
+
+	$slicer-breakpoints: 0 768px 992px 1200px 1400px;
+	$slicer-breakpoint-names: 'xs' 'sm' 'md' 'lg' 'hd';
+	$slicer-anti-overlap-corrections: -1px;
+}
+
+
+/**
+ * State classes
+ *
+ * Each state class used in this theme.
+ * 
+ * @uses map-get( $state-classes, $key ) to retrieve class name from map
+ * @type map
+ * @author Jérémy Levron levronjeremy@19h47.fr
+ */
+$state-classes: (
+	menu-open: menu--is-open,
+	search-open: search--is-open,
+	panel-open: panel--is-open,
+	submenu-open: submenu--is-open,
+	bottom:  is-bottom
+);

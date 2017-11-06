@@ -1,0 +1,90 @@
+/**
+ * Fonts declaration
+ *
+ * 100    $extralight   Extra Light or Ultra Light
+ * 200    $light        Light or Thin
+ * 300    $book         Book or Demi
+ * 400    $regular      Normal or Regular
+ * 500    $medium       Medium
+ * 600    $semibold     Semibold, Demibold
+ * 700    $bold         Bold
+ * 800    $extrabold    Black, Extra Bold or Heavy
+ * 900    $extrablack   Extra Black, Fat, Poster or Ultra Black
+ * .eot         IE9 Compat Modes 
+ * .eot?#iefix  IE6-IE8
+ * .woff        Modern Browsers
+ * .ttf         Safari, Android, iOS
+ * .svg         Legacy iOS
+ *
+ */
+
+
+/**
+ * Font face mixin
+ *
+ * Construct @font-face
+ * 
+ * @param  {String} $font-family     		Font name
+ * @param  {String} $font-family-namespace  Font namespace
+ * @param  {String} $file-path       		Font path
+ * @param  {String} $font-weight    		Font weight (default null)
+ * @param  {[type]} $font-style				Font style (default null)
+ */
+@mixin font-face( 
+	$font-family, 
+	$font-family-namespace, 
+	$file-path, 
+	$font-weight: null, 
+	$font-style: normal 
+) {
+	@font-face {
+		font-family: $font-family;
+			src: url('#{ $font-family }.eot');
+			src: 
+				url('#{ $file-path }#{ $font-family-namespace }/#{ $font-weight }/#{ $font-family-namespace }-#{ $font-weight }.eot?#iefix') format('embedded-opentype'),
+				url('#{ $file-path }#{ $font-family-namespace }/#{ $font-weight }/#{ $font-family-namespace }-#{ $font-weight }.woff') format('woff'),
+				url('#{ $file-path }#{ $font-family-namespace }/#{ $font-weight }/#{ $font-family-namespace }-#{ $font-weight }.ttf') format('truetype'),
+				url('#{ $file-path }#{ $font-family-namespace }/#{ $font-weight }/#{ $font-family-namespace }-#{ $font-weight }.svg##{ $font-family-namespace }' ) format('svg');
+		font-weight: $font-weight;
+		font-style: $font-style;
+	}
+}
+
+// Coco Gothic italic
+@font-face {
+	font-family: 'Coco Gothic';
+		src: url('#{ map-get( $directories, fonts ) }coco-gothic/italic/coco-gothic-italic.eot');
+		src: 
+			url('#{ map-get( $directories, fonts ) }coco-gothic/italic/coco-gothic-italic.eot?#iefix') format('embedded-opentype'),
+			url('#{ map-get( $directories, fonts ) }coco-gothic/italic/coco-gothic-italic.woff') format('woff'),
+			url('#{ map-get( $directories, fonts ) }coco-gothic/italic/coco-gothic-italic.ttf') format('truetype'),
+			url('#{ map-get( $directories, fonts ) }coco-gothic/italic/coco-gothic-italic.svg##coco-gothic-italic' ) format('svg');
+	font-weight: 400;
+	font-style: italic;
+}
+
+// Coco Gothic regular
+@font-face {
+	font-family: 'Coco Gothic';
+		src: url('#{ map-get( $directories, fonts ) }coco-gothic/regular/coco-gothic-regular.eot');
+		src: 
+			url('#{ map-get( $directories, fonts ) }coco-gothic/regular/coco-gothic-regular.eot?#iefix') format('embedded-opentype'),
+			url('#{ map-get( $directories, fonts ) }coco-gothic/regular/coco-gothic-regular.woff') format('woff'),
+			url('#{ map-get( $directories, fonts ) }coco-gothic/regular/coco-gothic-regular.ttf') format('truetype'),
+			url('#{ map-get( $directories, fonts ) }coco-gothic/regular/coco-gothic-regular.svg##coco-gothic-regular' ) format('svg');
+	font-weight: 400;
+	font-style: normal;
+}
+
+// Coco Gothic bold
+@font-face {
+	font-family: 'Coco Gothic';
+		src: url('#{ map-get( $directories, fonts ) }coco-gothic/bold/coco-gothic-bold.eot');
+		src: 
+			url('#{ map-get( $directories, fonts ) }coco-gothic/bold/coco-gothic-bold.eot?#iefix') format('embedded-opentype'),
+			url('#{ map-get( $directories, fonts ) }coco-gothic/bold/coco-gothic-bold.woff') format('woff'),
+			url('#{ map-get( $directories, fonts ) }coco-gothic/bold/coco-gothic-bold.ttf') format('truetype'),
+			url('#{ map-get( $directories, fonts ) }coco-gothic/bold/coco-gothic-bold.svg##coco-gothic-bold' ) format('svg');
+	font-weight: 700;
+	font-style: bold;
+}
