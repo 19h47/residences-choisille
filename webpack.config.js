@@ -104,6 +104,36 @@ let config = {
 
           		// exclude searching for files in the node_modules directory
           		exclude: /node_modules/
+          	},
+          	{
+		    	// Don't forget to install libpng `brew install libpng`
+		    	// Homebrew is the package manager of MacOS
+		    	// Maybe you need to update Homebrew before installing libpng
+		    	// `brew update` (https://brew.sh/)
+            	test: /\.(jpe?g|png|gif|svg)$/i,
+            	loaders: [
+            		'file-loader?context=src/assets/img/[ext]/[name].[ext]', 
+            		{  
+		    		// images loader
+	              		loader: 'image-webpack-loader',
+	              		query: {
+						mozjpeg: {
+							progressive: true
+						},
+						gifsicle: {
+							interlaced: false
+						},
+						optipng: {
+							optimizationLevel: 4
+						},
+						pngquant: {
+							quality: '75-90',
+							speed: 3
+						},
+	          		},
+	        	}],
+        		exclude: /node_modules/,
+        		include: __dirname
           	}
 		]
   	},
