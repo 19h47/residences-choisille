@@ -1,0 +1,31 @@
+/**
+ * Displays
+ *
+ * Create on-the-fly all utility classes from $display-values var instanciate in 
+ * _settings.scss, if `$import-utilities-displays` and 
+ * `$slicer-breakpoints-settings` are set to `true`
+ *
+ * @author Levron Jérémy <levronjeremy@19h47.fr>
+ */
+@if ( $import-utilities-displays == true ) and ( $slicer-breakpoints-settings == true ) {
+
+    // For each breakpoint found in $slicer-breakpoint-names
+    @each $breakpoint in $slicer-breakpoint-names {
+
+        @include from( $breakpoint ) {
+            
+            @each $display-value in $display-values {
+
+                %display-#{ $breakpoint }-#{ unquote( $display-value ) } {
+                    
+                    display: #{ unquote( $display-value ) };
+                }
+                
+                .display-#{ $breakpoint }-#{ unquote( $display-value ) } {
+                    
+                   @extend %display-#{ $breakpoint }-#{ unquote( $display-value ) };
+                }
+            }
+        }
+    }
+}

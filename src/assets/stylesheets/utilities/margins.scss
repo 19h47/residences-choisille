@@ -1,0 +1,122 @@
+/**
+ * Margins classes
+ */
+@if ( $import-utilities-margins == true ) {
+
+    // If Slicer breakpoint is instanciate
+    @if ( $slicer-breakpoints-settings == true ) {
+
+        // Loop through each breakpoint
+        @each $breakpoint in $slicer-breakpoint-names {
+
+            
+            // Create breakpoint "from" statement
+            @include from( $breakpoint ) {
+
+                /**
+                 * Margin auto
+                 */
+                %margin-#{ unquote( $breakpoint ) }-0-auto {
+                    margin: 0 auto;
+                }
+
+                .margin-#{ unquote( $breakpoint ) }-0-auto {
+                    @extend %margin-#{ unquote( $breakpoint ) }-0-auto;
+                }
+
+                %margin-#{ unquote( $breakpoint ) }-auto {
+                    margin: auto;
+                }
+
+                .margin-#{ unquote( $breakpoint ) }-auto {
+                    @extend %margin-#{ unquote( $breakpoint ) }-auto;
+                }
+
+
+                // y
+                %margin-#{ unquote( $breakpoint ) }-y-auto {
+                    margin-top: auto;
+                    margin-bottom:auto;
+                    
+                }
+                
+                .margin-#{ unquote( $breakpoint ) }-y-auto {
+                    @extend %margin-#{ unquote( $breakpoint ) }-y-auto;
+                }
+
+                // x
+                %margin-#{ unquote( $breakpoint ) }-x-auto {
+                    margin-right: auto;
+                    margin-left:auto;
+                }
+                .margin-#{ unquote( $breakpoint ) }-x-auto {
+                    @extend %margin-#{ unquote( $breakpoint ) }-x-auto;
+                }
+
+
+                @each $margin-value in $margin-values {
+                    
+                    /**
+                     * All properties
+                     */
+                    %margin-#{ unquote( $breakpoint ) }-#{ $margin-value } {
+                        
+                        margin: ( $margin-value / $base-font-size ) * 1em;
+                    }
+
+                    .margin-#{ unquote( $breakpoint ) }-#{ $margin-value } {
+                        
+                        @extend %margin-#{ unquote( $breakpoint ) }-#{ $margin-value };
+                    }
+
+                    
+                    %margin-#{ unquote( $breakpoint ) }-y-#{ $margin-value } {
+                        
+                        margin-top: ( $margin-value / $base-font-size ) * 1em;
+                        margin-bottom: ( $margin-value / $base-font-size ) * 1em;
+                    }
+
+                    .margin-#{ unquote( $breakpoint ) }-y-#{ $margin-value } {
+                        
+                        @extend %margin-#{ unquote( $breakpoint ) }-y-#{ $margin-value };
+                    }
+
+                    %margin-#{ unquote( $breakpoint ) }-x-#{ $margin-value } {
+                        
+                        margin-right: ( $margin-value / $base-font-size ) * 1em;
+                        margin-left: ( $margin-value / $base-font-size ) * 1em;
+                    }
+
+                    .margin-#{ unquote( $breakpoint ) }-x-#{ $margin-value } {
+                        
+                        @extend %margin-#{ unquote( $breakpoint ) }-x-#{ $margin-value };
+                    }
+                }
+
+                
+                // For each property find in $margin-properties
+                @each $margin-property in $margin-properties {
+
+                    // Construct each class for each breakpoint
+                    
+                    @each $margin-value in $margin-values {
+                        
+
+                        /**
+                         * For each properties
+                         */
+                        %margin-#{ unquote( $breakpoint ) }-#{ unquote( $margin-property ) }-#{ $margin-value } {
+                            
+                            margin-#{ unquote( $margin-property ) }: ( $margin-value / $base-font-size ) * 1em;
+                        }
+
+                        .margin-#{ unquote( $breakpoint ) }-#{ unquote( $margin-property ) }-#{ $margin-value } {
+                            
+                            @extend %margin-#{ unquote( $breakpoint ) }-#{ unquote( $margin-property ) }-#{ $margin-value };
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

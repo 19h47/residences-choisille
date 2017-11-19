@@ -1,0 +1,169 @@
+/**
+ * Fonts classes
+ */
+
+@if ( $import-utilities-fonts == true ) {
+    
+    /**
+     * Serif
+     */
+    %serif {
+        font-family: map-get( map-get( $font, families ), title );
+    }
+    .serif {
+        @extend %serif
+    }
+
+
+    /**
+     * Sans serif
+     */
+    %sans-serif {
+        font-family: map-get( map-get( $font, families ), body );
+    }
+    .sans-serif {
+        @extend %sans-serif;
+    }
+
+
+    /**
+     * Font families
+     * 
+     * @param  string $name  
+     * @param  string $family
+     */
+    @each $name, $family in map-get( $font, families )  {
+        
+        %font-#{ $name } {
+            font-family: $family;
+        }
+
+        .font-#{ $name } {
+            @extend %font-#{ $name };
+        }
+    }
+
+
+    /**
+     * Uppercase
+     */
+    %uppercase {
+        text-transform: uppercase;
+    }
+
+    .uppercase {
+        @extend %uppercase;
+    }
+
+
+    /**
+     * Lowercase
+     */
+    %lowercase {
+        text-transform: lowercase;
+    }
+
+    .lowercase {
+        @extend %lowercase;
+    }
+
+    
+
+    /**
+     * Underline
+     */
+    %underline {
+        text-decoration: underline;
+    }
+
+    .underline {
+        @extend %underline;
+    }
+
+
+    /**
+     * Letters spacing
+     *
+     * Constructor for each letter-spacing
+     *
+     * @param list $letters-spacing
+     * @author Jérémy Levron levronjeremy@19h47.fr
+     */
+    .letter-spacing-0 {
+        letter-spacing: normal;
+    }
+    @each $letter-spacing in $letters-spacing {
+        %letter-spacing-#{ $letter-spacing } {
+            @include letter-spacing( $letter-spacing );
+        }
+        .letter-spacing-#{ $letter-spacing } {
+            @extend %letter-spacing-#{ $letter-spacing };
+        }
+    }
+    
+    /**
+     * Font size
+     *
+     * Construct each utilities classes for each font-size found in abstracts/variables
+     *
+     * @param list $font-sizes
+     * @author Jérémy Levron levronjeremy@19h47.fr
+     */
+    @each $font-size in $font-sizes {
+
+        %font-size-#{ $font-size } {
+            font-size: #{ $font-size / $base-font-size }em;
+        }
+
+        .font-size-#{ $font-size } {
+            @extend %font-size-#{ $font-size };
+        }
+        
+        %font-size-#{ $font-size }px {
+            font-size: #{ $font-size }px;
+        }
+
+        .font-size-#{ $font-size }px {
+            @extend %font-size-#{ $font-size }px;
+        }
+    }
+
+    
+    /**
+     * Font weight
+     *
+     * Constructor class for each font weight found in map $font-weight
+     *
+     * @param $name             name of weight
+     * @param $value            value of weight
+     * @author Jérémy Levron    <levronjeremy@19h47.fr>
+     */
+    @each $name, $value in map-get( $font, weights ) {
+        
+        // Construct each utilities classes for each font-weight found in abstracts/variables
+        %font-#{ $name } {
+            font-weight: #{ $value };   
+        }
+
+        .font-#{ $name } {
+            @extend %font-#{ $name };
+        }
+    }
+
+    
+    /**
+     * Font style
+     *
+     * @param   $font-style
+     * @author  Jérémy Levron    <levronjeremy@19h47.fr>
+     */
+    @each $font-style in $font-styles {
+        %font-style-#{ unquote( $font-style ) } {
+            font-style: #{ unquote( $font-style ) };
+        }
+
+        .font-style-#{ unquote( $font-style ) } {
+            @extend %font-style-#{ unquote( $font-style ) };
+        }
+    }
+}

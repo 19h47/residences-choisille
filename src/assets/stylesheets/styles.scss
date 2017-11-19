@@ -1,0 +1,84 @@
+/**
+ * Main
+ *
+ * @see https://sass-guidelin.es/#the-7-1-pattern
+ */
+
+
+/**
+* Dependencies
+*/
+@import '~breakpoint-sass/stylesheets/breakpoint';
+@import '~breakpoint-slicer/stylesheets/breakpoint-slicer';
+@import 'abstracts/variables';
+@import 'base/fonts';
+
+
+/**
+ * Vendors
+ */
+@import
+	'~ress/ress',
+	'vendors/bootstrap-custom',
+	'vendors/slick';
+
+
+/**
+ * Abstracts
+ */
+@import
+	'abstracts/functions',
+	'abstracts/mixins',
+	'abstracts/placeholders';
+	//'abstracts/animations';
+
+@import 'vendors/wpcf7';
+
+/**
+ * Base
+ */
+@import
+	'base/base',
+	'base/typography';
+
+
+/**
+ * Layout
+ */
+@import
+	'layout/site';
+	//'layout/header',
+	//'layout/footer';
+
+
+/**
+ * Pages
+ */
+@import
+	'pages/page',
+	'pages/front-page',
+	'pages/contact',
+	'pages/recruitment';
+
+
+/**
+ * Components
+ */
+@import
+	'components/logo',
+	'components/slider',
+	'components/guid',
+	'components/menu',
+	'components/socials';
+
+
+/**
+ * Utilities
+ */
+@import 'utilities/_settings';
+
+
+/**
+ * Shame
+ */
+@import 'shame';

@@ -1,0 +1,238 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+
+/**
+ * Color variation
+ *
+ * Each colors used in the theme.
+ *
+ * @uses the_color($key, $value) to retrieve color value
+ * @type nested map
+ * @see http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
+ * @see http://www.colorhexa.com/ to pickup color name
+ * @author Jérémy Levron <levronjeremy@19h47.fr>
+ */
+$color-variations: (
+
+	black: #000000,
+	white: #ffffff,
+
+	red: (
+		strong: #ff0000,
+	),
+
+	green: (
+		light-grayish-lime: #d2f0d2,
+		lime: #5a6e69,
+	),
+
+	gray: (
+		very-dark: #555555,
+	),
+
+	blue: (
+		pure: #0075e3,
+	),
+	cyan: (
+		very-dark: #0a2828,
+		very-dark-01: #005041,
+		very-dark-02: #051e19,
+		light-grayish: #e6e9e8,
+	),
+	magenta: (
+		dark-moderate: #6E3278
+	),
+	orange: (
+		mostly-desaturated-dark: #af9664
+	)
+);
+
+
+/**
+ * Font
+ *
+ * A map containing all information about fonts (families and weights)
+ *
+ * @type map
+ */
+$font: (
+	/**
+	 * Font
+	 *
+	 * All fonts families found in the site are listed here
+	 *
+	 * @uses map-get( $font, $key ) to retrieve font value from map
+	 * @type map
+	 */
+	families: (
+		body: ( 'Coco Gothic', sans-serif ),
+		title: ( 'Melbourne', sans-serif ),
+	),
+
+
+	/**
+	 * Font weight
+	 *
+	 * Each font weight used in the theme.
+	 *
+	 * @uses map-get( $font, weights ) to retrieve font weight value
+	 * @type map
+	 * @author Jérémy Levron <levronjeremy@19h47.fr>
+	 */
+	weights: (
+		extralight: 100,
+		light: 200,
+		book: 300,
+		regular: 400,
+		medium: 500,
+		semibold: 600,
+		bold: 700,
+		extrabold: 800,
+		extrablack: 900
+	)
+);
+
+
+/**
+ * Base font size and base line height
+ */
+$base-font-size: 18;
+$base-font-size-px: #{ $base-font-size }px;
+$base-line-height: 22;
+$base-line-height-px: #{ $base-line-height }px;
+
+
+/**
+ * Grid columns number
+ *
+ * Number of columns in the grid, it override `$grid-columns` from
+ * bootstrap-sass. It means, if you wish, that you can instantiate a grid of 8,
+ * for example.
+ *
+ * @see https://github.com/twbs/bootstrap-sass/blob/master/assets/stylesheets/bootstrap/_variables.scss#L329
+ */
+$grid-columns: 12;
+
+
+/**
+ * Gutter width
+ *
+ * Padding between columns. Gets divided in half for the left and right, it
+ * overide `$grid-gutter-width` from bootstrap-sass
+ *
+ * @see http://stackoverflow.com/a/28193872/5091221
+ * @see https://github.com/twbs/bootstrap-sass/blob/master/assets/stylesheets/bootstrap/_variables.scss#L331
+ */
+$grid-gutter-width-unitless: 30;
+$grid-gutter-width: ( $grid-gutter-width-unitless * 1px );
+
+
+/**
+ * Outer gutter width
+ *
+ * (Most of the time it's the size of a gutter divide by 2.)
+ * Useful for the container.
+ */
+$grid-outer-gutter-width-unitless: 50;
+$grid-outer-gutter-width: $grid-outer-gutter-width-unitless * 1px;
+
+
+/**
+ * Prototype width
+ *
+ * From Photoshop, Sketch, Illustrator, Paint maybe? 😝
+ */
+$psd-width-unitless: 1200;
+$psd-width: $psd-width-unitless * 1px;
+
+
+/**
+ * Container width without grid outer gutter width
+ *
+ * Width keep from prototype
+ */
+$container-width-without-outer-gutter-unitless: 1000;
+$container-width: $container-width-without-outer-gutter-unitless * 1px;
+
+
+/**
+ * Container width
+ *
+ * Width keep from prototype (grid + outer gutter * 2 )
+ */
+$container-width-unitless: $container-width-without-outer-gutter-unitless + ( $grid-outer-gutter-width-unitless * 2 );
+$container-width: $container-width-unitless * 1px;
+
+
+/**
+ * Transitions
+ *
+ * @uses map-get( $transitions, $key ) to retrieve directory value from map
+ * @type map
+ * @see http://easings.net/
+ * @author Jérémy Levron <levronjeremy@19h47.fr>
+ */
+$transitions: (
+	ease: .3s ease,
+	zoom-in: 1s cubic-bezier( 0.25, 0.46, 0.45, 0.94 ),
+);
+
+
+/**
+ * Directories
+ *
+ * Each directories used in this theme.
+ *
+ * @uses map-get( $directories, $key ) to retrieve directory value from map
+ * @type map
+ * @author Jérémy Levron <levronjeremy@19h47.fr>
+ */
+$directories: (
+	fonts: "../fonts/",
+	img: "../../../static/img/",
+	svg: "../../../static/img/svg/",
+	jpg: "../img/jpg/",
+	png: "../../../static/img/png/",
+	gif: "../../../static/img/gif/",
+);
+
+
+/**
+ * Breakpoint slicer
+ *
+ * Setting up Breakpoint Slicer
+ *
+ * @see https://github.com/lolmaus/breakpoint-slicer
+ */
+$slicer-breakpoints-settings: true;
+@if ( $slicer-breakpoints-settings == true ) {
+
+	$slicer-breakpoints:        0       768px       992px      1200px      1400px;
+
+	//                          └────┬────┘ └────┬────┘ └────┬────┘ └────┬────┘ └────┬────
+	// Slice numbers:                1           2           3           4           5
+	$slicer-breakpoint-names:       'xs'        'sm'        'md'        'lg'        'hd';
+
+	$slicer-anti-overlap-corrections: -1px;
+}
+
+
+/**
+ * State classes
+ *
+ * Each state class used in this theme.
+ *
+ * @uses map-get( $state-classes, $key ) to retrieve class name from map
+ * @type map
+ * @author Jérémy Levron <levronjeremy@19h47.fr>
+ */
+$state-classes: (
+	menu-open: menu--is-open,
+	search-open: search--is-open,
+	panel-open: panel--is-open,
+	submenu-open: submenu--is-open,
+	single-menu-open: single-menu--is-open,
+	bottom: is-bottom,
+);

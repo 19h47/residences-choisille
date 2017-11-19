@@ -1,0 +1,13 @@
+/**
+ * Logo
+ *
+ * @uses .Logo
+ */
+.Logo {
+	
+	@at-root .Front-page & {
+		@extend %display-xs-inline-block, %vertical-align-middle;
+
+		max-width: 100%;
+	}
+}

@@ -1,0 +1,89 @@
+/**
+ * Paddings classes
+ */
+
+@each $breakpoint in $slicer-breakpoint-names {
+
+    @include from( $breakpoint ) {
+        // @warn $breakpoint;
+
+        @each $padding-value in $padding-values {
+            // @warn $padding-value;
+
+            $value: ( $padding-value / $base-font-size ) * 1em;
+
+
+            // y
+            %padding-#{ unquote( $breakpoint ) }-y-#{ $padding-value } {
+                @include padding( top $value bottom $value );
+            }
+            
+            .padding-#{ unquote( $breakpoint ) }-y-#{ $padding-value } {
+                
+                @extend %padding-#{ unquote( $breakpoint ) }-y-#{ $padding-value };
+            }
+
+
+            // x
+            %padding-#{ unquote( $breakpoint ) }-x-#{ $padding-value } {
+                @include padding( right $value left $value );
+            }
+
+            .padding-#{ unquote( $breakpoint ) }-x-#{ $padding-value } {
+                
+                @extend %padding-#{ unquote( $breakpoint ) }-x-#{ $padding-value };
+            }
+
+
+
+            %padding-#{ unquote( $breakpoint ) }-#{ $padding-value } {
+                
+                padding: ( $padding-value / $base-font-size ) * 1em;
+            }
+
+            .padding-#{ unquote( $breakpoint ) }-#{ $padding-value } {
+                
+                @extend %padding-#{ unquote( $breakpoint ) }-#{ $padding-value };
+            }
+        }
+    }
+}
+
+// Loop through each breakpoint
+@each $breakpoint in $slicer-breakpoint-names {
+
+    
+    // Create breakpoint "from" statement
+    @include from( $breakpoint ) {
+        
+        /**
+         * Padding auto
+         */
+        %padding-#{ unquote( $breakpoint ) }-0-auto {
+            padding: 0 auto;
+        }
+        .padding-#{ unquote( $breakpoint ) }-0-auto {
+            @extend %padding-#{ unquote( $breakpoint ) }-0-auto;
+        }
+
+        
+        // For each property find in $padding-properties
+        @each $padding-property in $padding-properties {
+
+            
+            @each $padding-value in $padding-values {
+
+
+                %padding-#{ unquote( $breakpoint ) }-#{ unquote( $padding-property ) }-#{ $padding-value } {
+                    
+                    padding-#{ unquote( $padding-property ) }: ( $padding-value / $base-font-size ) * 1em;
+                }
+
+                .padding-#{ unquote( $breakpoint ) }-#{ unquote( $padding-property ) }-#{ $padding-value } {
+                    
+                    @extend %padding-#{ unquote( $breakpoint ) }-#{ unquote( $padding-property ) }-#{ $padding-value };
+                }
+            }
+        }
+    }
+}

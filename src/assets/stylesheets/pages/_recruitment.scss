@@ -1,0 +1,27 @@
+/**
+ * Page recruitment
+ *
+ * @uses .Page-recruitment
+ */
+.Page-recruitment {
+
+	/**
+	 * Content
+	 *
+	 * @uses .Page-recruitment__content
+	 */
+	&__content {
+		@extend %text-xs-center;
+
+		color: the_color( gray, very-dark );
+
+		a {
+			color: the_color( cyan, very-dark-02 );
+		}
+
+		em {
+			@extend %font-bold;
+			color: the_color( orange, mostly-desaturated-dark );
+		}
+	}
+}

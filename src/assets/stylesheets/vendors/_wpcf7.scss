@@ -1,0 +1,68 @@
+/**
+ * WordPress Contact Form 7
+ *
+ * @uses .wpcf7
+ */
+.wpcf7 {
+	$this: &;
+
+	@include margin( top 85px bottom 85px );
+
+	.screen-reader-response {
+		@extend %display-xs-none;
+	}
+
+	&-form-control-wrap {
+		display: block;
+		width: 100%;
+	}
+	&-form-control {
+		@extend %display-xs-inline-block;
+		@include padding( top 13px right 10px bottom 13px left 10px );
+
+		background-color: the_color( cyan, light-grayish );
+		width: 100%;
+		outline: none;
+
+		&#{ $this }-submit {
+			@extend %display-xs-block;
+		}
+		&#{ $this }-not-valid {}
+	}
+
+	&-not-valid-tip {
+		@extend %display-xs-inline-block;
+		@include padding( top 13px right 10px bottom 13px left 10px );
+	}
+
+	&-email {}
+	&-submit {
+		@extend %font-bold, %uppercase, %Transition-ease;
+		@include font( 14.01, 34.02 );
+		@include margin( right auto left auto );
+
+		background-color: the_color( cyan, very-dark-01 );
+		border: 2px solid transparent;
+		color: the_color( white );
+		width: auto;
+
+		&:hover {
+			background-color: transparent;
+			color: the_color( cyan, very-dark-01 );
+			border-color: currentColor;
+		}
+	}
+	&-tel {}
+	&-text {}
+	&-textarea {}
+
+	&-validates-as-required {}
+
+	&-response-output {
+		@extend %text-xs-center;
+
+		&#{ $this }-validation-errors {}
+	}
+
+	&-display-none { @extend %display-xs-none; }
+}

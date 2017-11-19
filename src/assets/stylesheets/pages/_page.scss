@@ -1,0 +1,226 @@
+/**
+ * Page
+ *
+ * @uses .Page
+ */
+.Page {
+
+	/**
+	 * Header
+	 *
+	 * @uses .Page-header
+	 */
+	&-header {
+		@extend %font-bold, %font-title, %uppercase;
+
+		background: { color: the_color( cyan, very-dark ); }
+		color: the_color( green, lime );
+		font-size: 18.17px;
+		height: 65px;
+		line-height: normal;
+
+		[class^=col-xs] {
+			&:nth-child( 1 ) {
+
+				a {
+					border: {
+						right: {
+							color: the_color( black );
+							style: solid;
+							width: 1px;
+						}
+					}
+				}
+			}
+			&:nth-child( 2 ) {
+				a {
+					border: {
+						left: {
+							color: the_color( black );
+							style: solid;
+							width: 1px;
+						}
+					}
+				}
+			}
+		}
+
+		a {
+			@extend %Transition-ease, %display-xs-block;
+
+			line-height: 65px;
+
+			&.is-active,
+			&:hover {
+				color: the_color( orange, mostly-desaturated-dark );
+			}
+		}
+	}
+
+
+	/**
+	 * Menu
+	 *
+	 * @uses .Page-menu
+	 */
+	&-menu {
+
+		/**
+		 * Logo
+		 *
+		 * @uses .Page-menu__logo
+		 */
+		&__logo {
+			@extend %display-xs-inline-block, %vertical-align-middle;
+			@include margin( top 25px bottom 25px );
+		}
+
+
+		/**
+		 * Items
+		 *
+		 * @uses .Page-menu__items
+		 */
+		&__items {
+			@extend %list-unstyled, %text-xs-right;
+			@include margin( top 25px bottom 25px );
+		}
+
+
+		/**
+		 * Item
+		 *
+		 * @uses .Page-menu__item
+		 */
+		&__item {
+			@extend %display-xs-inline-block, %font-bold, %uppercase, %margin-xs-y-0;
+			@include font( 14, 16 );
+			@include margin( right 8px left 8px );
+
+			color: the_color( green, lime );
+
+			&:last-child { @include margin( right 0 ); }
+			&:first-child { @include margin( right 0 ); }
+
+			a {
+				@extend %Transition-ease, %display-xs-block;
+				@include padding( top 16px right 5px bottom 16px left 5px );
+
+				&.is-active,
+				&:hover {
+					color: the_color( cyan, very-dark );
+				}
+			}
+
+
+			/**
+			 * Contact
+			 *
+			 * @uses .Page-menu__item--contact
+			 */
+			&--contact {
+				color: the_color( cyan, very-dark );
+
+				border: {
+					color: the_color( orange, mostly-desaturated-dark );
+					style: solid;
+					width: 1px;
+				}
+
+				a { @include padding( right 20px left 20px ); }
+
+				a.is-active,
+				a:hover {
+					background: { color: the_color( orange, mostly-desaturated-dark ); }
+					color: the_color( white );
+				}
+			}
+		}
+	}
+
+
+	/**
+	 * Title
+	 *
+	 * @uses .Page-title
+	 */
+	&-title {
+		@extend %font-extrablack, %uppercase;
+
+		h1 {
+			@include font( 34, 42, 100 );
+			@include margin( top 85px bottom 10px );
+		}
+	}
+
+
+	/**
+	 * Footer
+	 *
+	 * @uses .Page-footer
+	 */
+	&-footer {
+		@include margin( top 85px );
+
+		background: { color: the_color( cyan, very-dark-02 ); }
+		color: the_color( white );
+
+		/**
+		 * Copyright
+		 *
+		 * @uses .Page-footer-copyright
+		 */
+		&-copyright {
+			@include margin( top 0 bottom 0 );
+
+			font-size: 14px;
+			line-height: 75px;
+
+			&:hover { text-decoration: underline; }
+		}
+
+
+		&-menu {
+			&__items {
+				@extend %list-unstyled, %margin-xs-0;
+
+				height: 75px;
+				line-height: 75px;
+			}
+			&__item {
+				@extend %margin-xs-y-0, %display-xs-inline-block, %uppercase, %font-bold;
+				@include font( 16, 34 );
+				@include margin( right $grid-gutter-width left $grid-gutter-width );
+
+				&:last-child { @include margin( right 0 ); }
+				&:first-child { @include margin( left 0 ); }
+
+				a.is-active,
+				a:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+
+
+	/**
+	 * Content
+	 *
+	 * @uses .Page-content
+	 */
+	&-content {
+		h2 {
+			@extend %font-style-italic;
+			@include font( 18, 24 );
+
+			color: the_color( orange, mostly-desaturated-dark );
+		}
+
+		a {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}

@@ -1,0 +1,65 @@
+/**
+ * Page contact
+ *
+ * @uses .Page-contact
+ */
+.Page-contact {
+
+	/**
+	 * Content
+	 */
+	&__content {
+		@extend %text-xs-center;
+		@include font( 18, 24 );
+
+		color: the_color( orange, mostly-desaturated-dark );
+	}
+
+
+	/**
+	 * Addresses
+	 *
+	 * @uses .Page-contact__addresses
+	 */
+	&__addresses {
+		@extend %text-xs-center;
+		@include margin( top 80px bottom 80px );
+
+		color: the_color( cyan, very-dark-02 );
+
+		h3 {
+			@extend %font-title, %uppercase;
+			@include font( 21.97, 21.95 );
+
+			color: the_color( green, lime );
+		}
+
+		p {
+			@extend %margin-xs-bottom-0;
+			@include font( 17.97, 21.97 );
+		}
+
+		.row { display: flex; flex-wrap: wrap;}
+
+		[class^=col-] {
+			flex-direction: column;
+			display: flex;
+
+			&:nth-child( 1 ) {
+				border-right: 1px solid the_color( green, lime );
+			}
+			&:nth-child( 2 ) {
+				border-right: 1px solid the_color( green, lime );
+				border-left: 1px solid the_color( green, lime );
+			}
+			&:nth-child( 3 ) {
+				border-left: 1px solid the_color( green, lime );
+			}
+		}
+	}
+
+	&__address {
+		@extend %text-xs-center;
+		@include padding( top $grid-gutter-width bottom $grid-gutter-width );
+	}
+}
