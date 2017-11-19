@@ -1,0 +1,58 @@
+{#
+/**
+ * /views/pages/recruitment
+ *
+ * @package 	WordPress
+ * @subpackage 	19h47
+ * @author 		Jérémy Levron levronjeremy@19h47.fr
+ */
+#}
+{% extends 'index.twig' %}
+
+
+{% block header %}
+	{{ parent() }}
+	{% include 'partials/page-header.twig' %}
+	{% include 'partials/page-menu.twig' %}
+
+{% endblock %}
+
+
+{% block content %}
+
+	{% include 'partials/page-title.twig' with { title: post.post_title, class: 'text-xs-center' } %}
+
+	<div class="Site-container Page-recruitment__content">
+		<div class="row">
+			<div class="col-xs-12 col-md-10 col-md-offset-1">
+
+				{{ post.content }}
+
+			</div>
+		</div>
+	</div>
+
+	<div class="Site-container">
+		<div class="row">
+			<div class="col-xs-12 col-md-10 col-md-offset-1">
+
+				{{
+					function(
+						'do_shortcode',
+						'[contact-form-7 id="' ~ form.recruitment.id ~ '" title="Formulaire de contact - Résidences Services Seniors"]'
+					)
+				}}
+
+			</div>
+		</div>
+	</div>
+
+
+
+{% endblock %}
+
+
+{% block footer %}
+	{% include 'partials/page-footer.twig' %}
+	{{ parent() }}
+{% endblock %}

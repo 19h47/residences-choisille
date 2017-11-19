@@ -1,0 +1,38 @@
+{#
+	/**
+	 * views/components/front-page-contact
+	 * 
+	 * @author  Levron Jérémy <levronjeremy@19h47.fr>
+	 */
+#}
+
+{% set class = position == 'left' ? ' is-on-the-left ' ~ class : ' is-on-the-right ' ~ class %}
+
+<a class="Front-page-contact{{ class }}" href="{{ link }}"{{ position ? ' data-position="' ~ position ~ '" data-open="false"' }}>
+	{% spaceless %}
+
+	{% if position == 'left' %}
+		<span class="icon">
+			<svg>
+			  	<use xlink:href="{{ theme.link }}/public/icons.svg#arrow"></use>
+			</svg>
+		</span>
+
+		<span class="label">Contactez-nous</span>
+	{% endif %}
+
+
+	{% if position == 'right' %}
+
+		<span class="label">Contactez-nous</span>
+
+		<span class="icon">
+			<svg>
+			  	<use xlink:href="{{ theme.link }}/public/icons.svg#arrow"></use>
+			</svg>
+		</span>
+		
+	{% endif %}
+
+	{% endspaceless %}
+</a>

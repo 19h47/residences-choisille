@@ -1,0 +1,37 @@
+{#
+	/**
+	 * /partials/page-menu
+	 *
+	 * @package WordPress
+	 * @subpackage rsdncschsll
+	 * @author Jérémy Levron levronjeremy@19h47.fr
+	 */
+#}
+
+<nav class="Page-menu Site-container">
+	<div class="row">
+
+		<div class="col-xs-3">
+			<a class="display-xs-block" href="{{ site.url }}">
+				<img class="Page-menu__logo" src="{{ theme.link }}/static/img/svg/page-logo.svg" alt="" width="205" height="40"/>
+			</a>
+		</div>
+
+		<div class="col-xs-9">
+			<ul class="Page-menu__items">
+				{% spaceless %}
+
+				{% for item in menu.page.header %}
+					<li class="Page-menu__item Page-menu__item--{{ item.slug }}">
+						<a {{ item.active ? 'class="is-active" ' }}href="{{ item.permalink }}">
+							{{ item.title }}
+						</a>
+					</li>
+				{% endfor %}
+
+				{% endspaceless %}
+			</ul>
+		</div>
+
+	</div>
+</nav>

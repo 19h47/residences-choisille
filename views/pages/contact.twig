@@ -1,0 +1,97 @@
+{#
+/**
+ * /views/pages/front-page
+ *
+ * @package 	WordPress
+ * @subpackage 	19h47
+ * @author 		Jérémy Levron levronjeremy@19h47.fr
+ */
+#}
+{% extends 'index.twig' %}
+
+
+{% block header %}
+	{{ parent() }}
+	{% include 'partials/page-header.twig' %}
+	{% include 'partials/page-menu.twig' %}
+
+{% endblock %}
+
+
+{% block content %}
+
+	{% include 'partials/page-title.twig' with { title: post.post_title, class: 'text-xs-center' } %}
+
+	<div class="Site-container Page-contact__content">
+		<div class="row">
+			<div class="col-xs-12 col-md-6 col-md-offset-3">
+
+				<p>{{ post.post_content }}</p>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="Site-container">
+		<div class="row">
+			<div class="col-xs-12 col-md-10 col-md-offset-1">
+
+				{{
+					function(
+						'do_shortcode',
+						'[contact-form-7 id="' ~ form.contact.id ~ '" title="Formulaire de contact - Résidences Services Seniors"]'
+					)
+				}}
+
+			</div>
+		</div>
+	</div>
+
+
+	<div class="Site-container Page-contact__addresses">
+		<div class="row">
+			<div class="col-xs-4">
+				<div class="Page-contact__address">
+					<img src="{{ theme.link }}/static/img/svg/phone.svg" alt="" width="20" height="30" />
+
+					<h3>Téléphone</h3>
+					<p>
+						Tél. {{ post.phone }}<br>
+						Fax. {{ post.fax }}
+					</p>
+
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="Page-contact__address">
+					<img src="{{ theme.link }}/static/img/svg/marker.svg" alt="" width="25" height="35" />
+
+					<h3>Adresse</h3>
+					<p>
+						{{ post.address }}
+					</p>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="Page-contact__address">
+					<img src="{{ theme.link }}/static/img/svg/mail.svg" alt="" width="30" height="20" />
+
+					<h3>Email</h3>
+					<p>
+						{{ post.email }}
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	{% include 'partials/page-illustration.twig' %}
+
+{% endblock %}
+
+
+{% block footer %}
+	{% include 'partials/page-footer.twig' %}
+	{{ parent() }}
+{% endblock %}

@@ -1,0 +1,32 @@
+{#
+	/**
+	 * /partials/page-header
+	 *
+	 * @package WordPress
+	 * @subpackage rsdncschsll
+	 * @author Jérémy Levron levronjeremy@19h47.fr
+	 */
+#}
+
+<header class="Page-header">
+
+	<div class="Site-container">
+
+		<div class="row">
+
+			<div class="col-xs-6 text-xs-center padding-xs-right-0">
+				<a {{ ehpad.active ? 'class="is-active" ' }}href="{{ ehpad.permalink }}">
+					{{ ehpad.title }}
+				</a>
+			</div>
+			<div class="col-xs-6 text-xs-center padding-xs-left-0">
+				<a {{ rss.active ? 'class="is-active" ' }}href="{{ rss.permalink }}">
+					{{ rss.title }}
+				</a>
+			</div>
+
+		</div>
+
+	</div>
+
+</header>

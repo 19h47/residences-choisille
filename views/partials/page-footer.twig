@@ -1,0 +1,36 @@
+{#
+	/**
+	 * /partials/page-footer
+	 *
+	 * @package WordPress
+	 * @subpackage rsdncschsll
+	 * @author Jérémy Levron levronjeremy@19h47.fr
+	 */
+#}
+
+<footer class="Page-footer">
+	<div class="Site-container">
+
+		<div class="row">
+
+			<div class="col-xs-6">
+				<p class="Page-footer-copyright">© <a href="{{ site.url }}">Les résidences Choisille</a></p>
+			</div>
+
+			<div class="col-xs-6 text-xs-right">
+				<ul class="Page-footer-menu__items">
+					{% spaceless %}
+
+						{% for item in menu.page.footer %}
+							<li class="Page-footer-menu__item">
+								<a {{ item.active ? 'class="is-active" ' }}href="{{ item.permalink }}">{{ item.title }}</a>
+							</li>
+						{% endfor %}
+
+					{% endspaceless %}
+				</ul>
+			</div>
+
+		</div>
+	</div>
+</footer>

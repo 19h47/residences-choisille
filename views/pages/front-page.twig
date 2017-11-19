@@ -1,0 +1,124 @@
+{#
+/**
+ * /views/pages/front-page
+ *
+ * @package 	WordPress
+ * @subpackage 	19h47
+ * @author 		Jérémy Levron levronjeremy@19h47.fr
+ */
+#}
+{% extends 'index.twig' %}
+
+
+{% block header %}
+	{{ parent() }}
+
+	<header class="Site-header Site-container js-home-header">
+		<div class="row">
+			<div class="col-xs-12 col-md-6 text-xs-left">
+				
+				{% 
+					include 'components/front-page-contact.twig' 
+					with { 
+						link: ehpad.contact,
+						position: 'left',
+						class: 'js-home-contact'
+					} 
+				%}
+				
+			</div>
+			<div class="col-xs-12 col-md-6 text-xs-right">
+				
+				{% 
+					include 'components/front-page-contact.twig' 
+					with { 
+						link: rss.contact,
+						position: 'right',
+						class: 'js-home-contact'
+					} 
+				%}
+
+			</div>
+		</div>
+		
+	</header>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+	<div class="Site-container Front-page-content js-home-content">
+		<div class="row">
+			<div class="col-xs-12 text-xs-center">
+
+				<img class="Logo" src="{{ theme.link }}/static/img/svg/logo.svg" alt="" />
+
+				<p class="Front-page-baseline">Seniors ? Trouvez la solution qui vous correspond.</p>
+
+
+
+			</div>
+			
+			<div class="col-xs-12 text-xs-center">
+				
+				<div class="Front-page-links">
+
+					{% spaceless %}
+						
+					<a 
+						class="js-home-link" 
+						href="{{ ehpad.permalink }}"
+						data-position="left"
+						data-open="false"
+					>
+						EHPAD
+					</a>
+
+					<a 
+						class="js-home-link" 				
+						data-position="right"
+						data-open="false"
+						href="{{ rss.permalink }}"
+					>
+						Résidences Services Seniors
+					</a>
+
+					{% endspaceless %}
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="Front-page-decor">
+		<svg 
+			version="1.1" 
+			xmlns="http://www.w3.org/2000/svg" 
+			xmlns:xlink="http://www.w3.org/1999/xlink" 
+			x="0" 
+			y="0"
+			width="1200px" 
+			height="768px" 
+			viewBox="0 0 1200 768" 
+			preserveAspectRatio="none"
+		>
+		
+			<polygon 
+				class="js-home-panel-left panel left" 
+				points="0,0 0,768 425.240234,768 774.916016,0"
+			/>
+			<polyline 
+				class="js-home-panel-right panel right" 
+				points="774.916016,0 1200,0 1200,768 425.240234,768"
+
+			/>
+		
+		</svg>
+	</div>
+{% endblock %}
+
+
+{% block footer %}{% endblock %}

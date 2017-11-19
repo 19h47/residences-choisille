@@ -1,0 +1,34 @@
+{#
+	/**
+	 * /views/header
+	 *
+	 * @package WordPress
+	 * @subpackage frmtcn
+	 * @author Jérémy Levron levronjeremy@19h47.fr
+	 */
+#}
+
+<!DOCTYPE html>
+<!--[if IE 9]>
+<html {{ html_class( 'ie9 no-js no-touch' ) }} {{ language_attributes }}>
+<![endif]-->
+<!--[if !(IE 9)]><!-->
+<html {{ language_attributes }} {{ html_class( 'no-js no-touch' ) }}>
+<!--<![endif]-->
+	
+	<head>
+
+		<meta charset="{{ site.charset }}">
+		<link rel="profile" href="http://gmpg.org/xfn/11">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+		{{ wp_head }}
+
+		{# {% include 'components/google-analytics.twig' %} #}
+
+	</head>
+
+	<body {{ body_class( 'border-color-main' ) }}>
+
+		<main class="Site-wrapper">
