@@ -13,6 +13,10 @@
 		@include font( 18, 24 );
 
 		color: the_color( orange, mostly-desaturated-dark );
+
+		em {
+			@extend %font-bold;
+		}
 	}
 
 
@@ -39,27 +43,51 @@
 			@include font( 17.97, 21.97 );
 		}
 
-		.row { display: flex; flex-wrap: wrap;}
+		.row {
+			@include from( 'md' ) {
+				display: flex; flex-wrap: wrap;
+			}
+		}
 
 		[class^=col-] {
-			flex-direction: column;
-			display: flex;
 
-			&:nth-child( 1 ) {
-				border-right: 1px solid the_color( green, lime );
+			@include from( 'md' ) {
+				flex-direction: column;
+				display: flex;
+				width: calc( #{ percentage( 4 / 12 ) } - 1px );
+
+				&:nth-child( 1 ) {
+					&::after {
+						@include absolute( top 0 left 100% bottom 0 );
+
+						background: { color: the_color( green, lime ); }
+						width: 2px;
+						content: '';
+					}
+				}
+				&:nth-child( 2 ) {
+					&::after {
+						@include absolute( top 0 left 100% bottom 0 );
+
+						background: { color: the_color( green, lime ); }
+						width: 2px;
+						content: '';
+					}
+				}
 			}
-			&:nth-child( 2 ) {
-				border-right: 1px solid the_color( green, lime );
-				border-left: 1px solid the_color( green, lime );
-			}
-			&:nth-child( 3 ) {
-				border-left: 1px solid the_color( green, lime );
-			}
+			// &:nth-child( 3 ) {}
 		}
 	}
 
 	&__address {
 		@extend %text-xs-center;
 		@include padding( top $grid-gutter-width bottom $grid-gutter-width );
+
+		img {
+			@include size( 30px, 35px );
+
+			object-fit: contain;
+			object-position: center;
+		}
 	}
 }

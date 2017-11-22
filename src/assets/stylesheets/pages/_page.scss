@@ -16,29 +16,33 @@
 		background: { color: the_color( cyan, very-dark ); }
 		color: the_color( green, lime );
 		font-size: 18.17px;
-		height: 65px;
 		line-height: normal;
 
-		[class^=col-xs] {
-			&:nth-child( 1 ) {
+		@include from( 'md' ) {
 
-				a {
-					border: {
-						right: {
-							color: the_color( black );
-							style: solid;
-							width: 1px;
+			height: 65px;
+
+			[class^=col-xs] {
+				&:nth-child( 1 ) {
+
+					a {
+						border: {
+							right: {
+								color: the_color( black );
+								style: solid;
+								width: 1px;
+							}
 						}
 					}
 				}
-			}
-			&:nth-child( 2 ) {
-				a {
-					border: {
-						left: {
-							color: the_color( black );
-							style: solid;
-							width: 1px;
+				&:nth-child( 2 ) {
+					a {
+						border: {
+							left: {
+								color: the_color( black );
+								style: solid;
+								width: 1px;
+							}
 						}
 					}
 				}
@@ -73,6 +77,12 @@
 		&__logo {
 			@extend %display-xs-inline-block, %vertical-align-middle;
 			@include margin( top 25px bottom 25px );
+
+			max-width: 100%;
+
+			@include from( 'md' ) {
+				width: 100%;
+			}
 		}
 
 
@@ -93,14 +103,14 @@
 		 * @uses .Page-menu__item
 		 */
 		&__item {
-			@extend %display-xs-inline-block, %font-bold, %uppercase, %margin-xs-y-0;
+			@extend %display-xs-none, %display-md-inline-block, %font-bold, %uppercase, %margin-xs-y-0;
 			@include font( 14, 16 );
 			@include margin( right 8px left 8px );
 
 			color: the_color( green, lime );
 
 			&:last-child { @include margin( right 0 ); }
-			&:first-child { @include margin( right 0 ); }
+			&:first-child { @include margin( left 0 ); }
 
 			a {
 				@extend %Transition-ease, %display-xs-block;
@@ -116,15 +126,27 @@
 			/**
 			 * Contact
 			 *
-			 * @uses .Page-menu__item--contact
+			 * @uses .Page-menu__item--nous-contacter
 			 */
-			&--contact {
+			&--nous-contacter {
+				@extend %display-xs-inline-block, %text-xs-center;
+
 				color: the_color( cyan, very-dark );
 
 				border: {
 					color: the_color( orange, mostly-desaturated-dark );
 					style: solid;
 					width: 1px;
+				}
+
+				width: 100%;
+
+				@include at( 'xs' ) {
+					margin: 0;
+				}
+
+				@include from( 'sm' ) {
+					width: auto;
 				}
 
 				a { @include padding( right 20px left 20px ); }
@@ -148,8 +170,12 @@
 		@extend %font-extrablack, %uppercase;
 
 		h1 {
-			@include font( 34, 42, 100 );
+			@include font( 20, 42, 100 );
 			@include margin( top 85px bottom 10px );
+
+			@include from( 'md' ) {
+				@include font( 34, 42, 100 );
+			}
 		}
 	}
 
@@ -164,6 +190,9 @@
 
 		background: { color: the_color( cyan, very-dark-02 ); }
 		color: the_color( white );
+
+		@at-root .page-id-6 & { @include margin( top 0 ); }
+		@at-root .page-id-12 & { @include margin( top 0 ); }
 
 		/**
 		 * Copyright
@@ -182,18 +211,26 @@
 
 		&-menu {
 			&__items {
-				@extend %list-unstyled, %margin-xs-0;
+				@extend %list-unstyled, %margin-xs-top-0, %margin-md-bottom-0;
+				@include margin( bottom $grid-gutter-width );
 
-				height: 75px;
 				line-height: 75px;
+
+				@include from( 'md' ) {
+					height: 75px;
+				}
 			}
 			&__item {
-				@extend %margin-xs-y-0, %display-xs-inline-block, %uppercase, %font-bold;
+				@extend %margin-xs-y-0, %display-xs-block, %display-md-inline-block, %uppercase, %font-bold;
 				@include font( 16, 34 );
-				@include margin( right $grid-gutter-width left $grid-gutter-width );
+				@include margin( right 0 left 0 );
 
 				&:last-child { @include margin( right 0 ); }
 				&:first-child { @include margin( left 0 ); }
+
+				@include from( 'md' ) {
+					@include margin( right $grid-gutter-width left $grid-gutter-width );
+				}
 
 				a.is-active,
 				a:hover {
@@ -215,6 +252,10 @@
 			@include font( 18, 24 );
 
 			color: the_color( orange, mostly-desaturated-dark );
+		}
+
+		em {
+			@extend %font-bold;
 		}
 
 		a {

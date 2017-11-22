@@ -1,0 +1,696 @@
+/**
+ * Residence
+ *
+ * @uses .Residence
+ */
+.Residence {
+
+	/**
+	 * Slider
+	 *
+	 * @uses .Residence-slider
+	 */
+	&-slider {
+		@extend %position-xs-relative;
+
+
+		/**
+		 * Logo
+		 *
+		 * @uses .Residence-slider__logo
+		 */
+		&__logo {
+			@extend %text-xs-center, %Pointer-events-none;
+			@include absolute( top 50% right 0 left 0 );
+
+			transform: translate3d( 0, -50%, 0 );
+			z-index: 100;
+
+			img {
+				max-width: 100%;
+			}
+
+			p {
+				@extend %uppercase, %font-bold, %font-title;
+				@include font( 21, 21, 50 );
+
+				color: the_color( white );
+				text-shadow: 0px 2px 0px rgba( the_color( blue, very-dark ), .5 );
+			}
+		}
+
+
+		/**
+		 * Navigation
+		 *
+		 * @uses .Residence-slider__navigation
+		 */
+		&__navigation {
+			@extend %list-unstyled, %margin-xs-y-0;
+			@include absolute( top 50% right 0 );
+
+			transform: translate3d( 0, -50%, 0 );
+			z-index: 150;
+
+			li {
+				// @extend %margin-xs-0;
+				@include margin( top 2px bottom 2px );
+				@include size( 50px );
+			}
+
+			&__previous {
+				@extend %display-xs-inline-block, %vertical-align-middle;
+				@include size( 100% );
+
+				background: {
+					color: the_color( orange, mostly-desaturated-dark );
+					// image: url( '#{ map-get( $directories, svg ) }arrow-previous.svg' );
+					// size: 10px 15px;
+					// position: center;
+				}
+				border-radius: 0;
+
+				svg {
+					max-width: 10px;
+					max-height: 15px;
+				}
+			}
+
+			&__next {
+				@extend %display-xs-inline-block, %vertical-align-middle;
+				@include size( 100% );
+
+				background: {
+					color: the_color( orange, mostly-desaturated-dark );
+					// image: url( '#{ map-get( $directories, svg ) }arrow-next.svg' );
+					// size: 10px 15px;
+					// position: center;
+				}
+				border-radius: 0;
+
+				svg {
+					max-width: 10px;
+					max-height: 15px;
+				}
+			}
+		}
+
+
+		/**
+		 * Items
+		 *
+		 * @uses .Residence-slider__items
+		 */
+		&__items {
+			@extend %list-unstyled, %margin-xs-y-0;
+			@include size( 100% );
+
+			.slick-list,
+			.slick-track {
+				@extend %margin-xs-0;
+				height: 100%;
+			}
+		}
+
+		/**
+		 * Item
+		 *
+		 * @uses .Residence-slider
+		 */
+		&__item {
+			@extend %margin-xs-y-0, %position-xs-relative;
+			@include size( 100%, 500px );
+
+			img {
+				@extend %display-xs-inline-block, %vertical-align-middle;
+				@extend %Position-absolute-center;
+				@include size( 100% );
+
+				object-fit: cover;
+				object-position: center
+			}
+		}
+	}
+
+
+	/**
+	 * Accommodation
+	 *
+	 * @uses .Residence-accommodation
+	 */
+	&-accommodation {
+		@extend %position-xs-relative;
+		@include padding( top 90px bottom 90px );
+		@include margin( top 90px );
+
+		background: { color: the_color( green, lime ); }
+		color: the_color( white );
+
+		@at-root .page-id-6 & {
+			@include from( 'md' ) {
+				@include padding( top #{ ( 90 + 50 ) }px );
+			}
+		}
+
+		@include from( 'md' ) {
+			@include margin( top 0 );
+		}
+
+		@at-root .page-id-12 & {
+			@include from( 'md' ) {
+				@include padding( bottom #{ ( 90 + 50 ) }px );
+			}
+		}
+
+		h2 {
+			@extend %font-extrablack, %uppercase, %margin-xs-y-0;
+			@include font( 20, 42, 100 );
+
+			@include from( 'md' ) {
+				@include font( 34, 42, 100 );
+			}
+		}
+
+		p:last-child {
+			@extend %margin-xs-bottom-0;
+		}
+
+		img {
+			@extend %Position-absolute-center;
+			@include size( 100% );
+
+			object-fit: cover;
+			object-position: center;
+		}
+	}
+
+
+	/**
+	 * Presentation
+	 *
+	 * @uses .Residence-presentation
+	 */
+	&-presentation {
+		@include padding( top 90px );
+
+		@at-root .page-id-6 & {
+			@include padding( bottom 0 );
+		}
+
+		@at-root .page-id-12 & {
+			@include padding( bottom 90px );
+		}
+
+		background: {
+			image: url( '#{ map-get( $directories, jpg ) }presentation-background.jpg' );
+			size: 100% auto;
+			position: bottom;
+		}
+
+		img {
+			@extend %display-xs-inline-block, %vertical-align-middle, %position-xs-relative;
+
+			z-index: 1;
+
+			@include from( 'md' ) {
+				@at-root .page-id-6 & {
+					@include margin( bottom -50px );
+				}
+			}
+
+			@include from( 'md' ) {
+				@at-root .page-id-12 & {
+					transform: translate3d( 0, -#{ ( 90 + 50 ) }px, 0 );
+				}
+			}
+		}
+
+		h2 {
+			@extend %font-extrablack, %uppercase, %margin-md-top-0;
+			@include font( 34, 42, 100 );
+
+			color: the_color( cyan, very-dark-02 );
+		}
+
+		em {
+			@extend %font-bold;
+			color: the_color( orange, mostly-desaturated-dark );
+		}
+		p { color: the_color( gray, very-dark ); }
+
+		&__item {
+			@include padding( top 90px );
+			@extend %text-xs-center;
+			h3 {
+				@extend %uppercase;
+				@include font( 18, 16, 200 );
+
+				color: the_color( gray, very-dark );
+			}
+
+			svg {
+				max-width: 65px;
+				max-height: 65px;
+			}
+		}
+	}
+
+
+	/**
+	 * Services
+	 *
+	 * @uses .Residence-services
+	 */
+	&-services {
+		@include padding( top 90px  );
+
+		@at-root .page-id-6 & {
+			@include margin( bottom 0 );
+
+			background: {
+				image: url( '#{ map-get( $directories, jpg ) }services-background.jpg' );
+				size: 100% auto;
+				position: top;
+			}
+		}
+
+		@at-root .page-id-12 & {
+			@include margin( bottom 90px );
+		}
+
+
+		&__wrapper {
+			@include padding( top 90px );
+
+			@include from( 'md' ) {
+				display: flex;
+			}
+		}
+
+		h2 {
+			@extend %font-extrablack, %uppercase, %margin-xs-top-0;
+			@include font( 34, 42, 100 );
+
+			color: the_color( cyan, very-dark-02 );
+		}
+
+		em {
+			@extend %font-bold;
+			color: the_color( orange, mostly-desaturated-dark );
+		}
+
+		strong {
+			color: the_color( cyan, very-dark-02 );
+		}
+
+
+		&__images {
+			@extend %list-unstyled, %margin-xs-y-0;
+
+			.slick-track { @extend %margin-xs-0; }
+
+			li {
+				@extend %margin-xs-0;
+			}
+
+			img {
+				@extend %display-xs-inline-block, %vertical-align-middle;
+				@extend .img-full;
+			}
+		}
+
+
+		&__content {
+			@extend %list-unstyled, %margin-xs-y-0;
+
+			color: the_color( gray, very-dark );
+
+			@include from( 'md' ) {
+				height: 100%;
+			}
+
+			.slick-track { @extend %margin-xs-0; }
+
+			li { @extend %margin-xs-0; }
+
+			h3 {
+				@extend %font-extrablack, %margin-md-top-0;
+				@include font( 30, 38 );
+
+				color: the_color( cyan, very-dark-01 );
+			}
+
+			strong {
+				@extend %font-extrablack;
+
+				color: the_color( cyan, very-dark-02 );
+			}
+
+			.slick-dots {
+				@extend %list-unstyled, %margin-xs-0;
+
+				color: the_color( cyan, very-dark-03 );
+
+				@include from( 'md' ) {
+					@include absolute( left 0 bottom 0 );
+				}
+
+				li {
+					@extend %display-xs-inline-block;
+					@include padding( bottom 10px );
+					@include margin(
+						right #{ ( 25 / 2 ) }px
+						bottom #{ ( 25 / 2 ) }px
+						left #{ ( 25 / 2 ) }px
+					);
+
+					border: {
+						bottom: {
+							color: transparent;
+							style: solid;
+							width: 1px;
+						}
+					}
+
+					@include from( 'md' ) {
+						@include margin( bottom 0 );
+					}
+
+					&:first-child { @include margin( left 0 ); }
+					&:last-child { @include margin( right 0 ); }
+
+					&.slick-active {
+						color: the_color( orange, mostly-desaturated-dark );
+						border: {
+							bottom: {
+								color: currentColor;
+							}
+						}
+					}
+
+					button {
+						@include font( 24, 22 );
+
+						&::before {
+							@extend %display-xs-inline-block;
+							content: '0';
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+	/**
+	 * Apartments
+	 *
+	 * @uses .Residence-apartments
+	 */
+	&-apartments {
+		@include margin( top 90px );
+		@include padding( bottom 90px );
+
+		h2 {
+			@extend %font-extrablack, %uppercase, %margin-xs-top-0;
+			@include font( 20, 42, 100 );
+
+			color: the_color( cyan, very-dark-02 );
+
+			@include from( 'md' ) {
+				@include font( 34, 42, 100 );
+			}
+		}
+		em {
+			@extend %font-bold;
+			// color: the_color( orange, mostly-desaturated-dark );
+		}
+
+		&__header { @include margin( bottom 90px ); }
+
+		&__slider {
+			@extend %position-xs-relative;
+
+			background: { color: the_color( cyan, very-dark-01 ); }
+			z-index: 1;
+
+			@include from( 'md' ) {
+				@include margin( top 50px );
+				height: 410px;
+			}
+		}
+
+		&__content {
+			@extend %margin-xs-y-0, %list-unstyled;
+			@include margin( right $grid-gutter-width left $grid-gutter-width );
+
+
+			@include from( 'md' ) {
+				@include absolute( top 50% right 0 left 0 );
+				@include margin( right percentage( 85 / 745 ) left percentage( 340 / 745 ) );
+
+				transform: translate3d( 0, -50%, 0 );
+			}
+
+			color: the_color( white );
+		}
+
+		&__images {
+			@extend %margin-xs-y-0;
+			@include padding( right $grid-gutter-width / 2 left $grid-gutter-width / 2 );
+
+			list-style-type: none;
+			width: 100%;
+			z-index: 2;
+
+			@include from( 'md' ) {
+				@include absolute( top 0 left 0 );
+				@include margin( right ( $grid-gutter-width / 2 ) left ( $grid-gutter-width / 2 ) );
+				@include padding( bottom 50px left 0 );
+				@include size( percentage( 6 / 12 ), 100% );
+			}
+
+			.slick-list {
+				height: 100%;
+			}
+
+			.slick-track {
+				@extend %margin-xs-y-0;
+				height: 100%;
+			}
+
+			li {
+				@extend %margin-xs-y-0;
+				height: 100%;
+
+				img {
+					@extend %display-xs-inline-block, %vertical-align-middle;
+					@include size( 100% );
+
+					object-fit: cover;
+					object-position: center;
+				}
+			}
+		}
+
+		/**
+		 * Navigation
+		 *
+		 * @uses .Residence-appartments__navigation
+		 */
+		&__navigation {
+			@extend %list-unstyled, %margin-xs-y-0, %text-xs-center, %text-md-left;
+
+			z-index: 3;
+
+			@include from( 'md' ) {
+				@include absolute( top 50% left 0 );
+				@include margin( right ( $grid-gutter-width / 2 ) left ( $grid-gutter-width / 2 ) );
+				@include padding( bottom 50px );
+
+				transform: translate3d( 0, -50%, 0 );
+			}
+
+			li {
+				@extend %display-xs-inline-block, %display-md-block;
+				@include margin( top $grid-gutter-width bottom $grid-gutter-width );
+				@include size( 50px );
+
+				@include from( 'md' ) {
+					@include margin( top 2px bottom 2px );
+				}
+			}
+
+			&__previous {
+				@extend %display-xs-inline-block, %vertical-align-middle;
+				@include size( 100% );
+
+				background: {
+					color: the_color( orange, mostly-desaturated-dark );
+					// image: url( '#{ map-get( $directories, svg ) }arrow-previous.svg' );
+					// size: 10px 15px;
+					// position: center;
+				}
+				border-radius: 0;
+
+				svg {
+					max-width: 10px;
+					max-height: 15px;
+				}
+			}
+
+			&__next {
+				@extend %display-xs-inline-block, %vertical-align-middle;
+				@include size( 100% );
+
+				background: {
+					color: the_color( orange, mostly-desaturated-dark );
+					// image: url( '#{ map-get( $directories, svg ) }arrow-next.svg' );
+					// size: 10px 15px;
+					// position: center;
+				}
+				border-radius: 0;
+
+				svg {
+					max-width: 10px;
+					max-height: 15px;
+				}
+			}
+		}
+
+
+		&__catchphrase {
+			@include margin( top 90px bottom 90px );
+			@extend %font-bold, %font-style-italic, %text-xs-center;
+			@include font( 28.01, 34.01 );
+
+			color: the_color( cyan, very-dark-03 );
+		}
+	}
+
+
+	/**
+	 * Blog
+	 *
+	 * @uses .Residence-blog
+	 */
+	&-blog {
+		@include padding( top 90px bottom 90px );
+
+		color: the_color( cyan, very-dark-03 );
+
+		h2 {
+			@extend %font-bold, %font-style-italic, %margin-xs-top-0;
+			@include font( 28, 34 );
+
+		}
+
+		a {
+			@extend %uppercase, %font-bold, %Transition-ease, %display-xs-block, %display-md-inline-block;
+			@include margin( top $grid-gutter-width right auto left auto );
+			@include padding( top 7px right 23px bottom 7px left 23px );
+			@include font( 14, 34 );
+
+			color: the_color( white );
+			background: {
+				color: the_color( cyan, very-dark-01 );
+			}
+			border: {
+				color: the_color( cyan, very-dark-01 );
+				style: solid;
+				width: 2px;
+			}
+
+			&:hover {
+				color: the_color( cyan, very-dark-01 );
+
+				background: {
+					color: transparent;
+				}
+			}
+		}
+	}
+
+
+	/**
+	 * Find us
+	 *
+	 * @uses .Residence-find-us
+	 */
+	&-find-us {
+		@include margin( top -50px );
+
+		.row {
+
+			@include from( 'md' ) {
+				display: flex;
+				align-items: flex-end;
+			}
+		}
+
+		iframe {
+			@extend %Position-absolute-center;
+
+			@include size( calc( 100% - #{ $grid-gutter-width } ), 100% );
+			@include margin( right ( $grid-gutter-width / 2 ) left ( $grid-gutter-width / 2 ) );
+		}
+
+		h2 {
+			@extend %font-extrablack, %margin-md-top-0;
+			@include font( 30, 38 );
+			color: the_color( cyan, very-dark-01 );
+		}
+
+		img {
+			@extend %display-xs-inline-block, %vertical-align-middle;
+			@include size( 100% );
+
+			object-fit: cover;
+			object-position: center;
+		}
+
+		p {
+			color: the_color( gray, very-dark );
+
+			&:last-child { @include margin( bottom 0 ); }
+		}
+	}
+
+
+	/**
+	 * Contact us
+	 *
+	 * @uses .Residence-
+	 */
+	&-contact-us {
+		@extend %text-xs-center;
+		@include padding( top 90px bottom 90px );
+		@include margin( top 90px );
+
+		background: { color: the_color( cyan, very-dark-03 ); }
+		color: the_color( white );
+
+		p {
+			@extend %margin-xs-0;
+		}
+
+		a {
+			@extend %font-bold, %uppercase, %display-xs-inline-block, %Transition-ease;
+			@include font( 14, 34 );
+			@include margin( top $grid-gutter-width );
+			@include padding( top 14px right 20px bottom 14px left 20px );
+
+			color: the_color( orange, mostly-desaturated-dark );
+			border: {
+				color: the_color( orange, mostly-desaturated-dark );
+				style: solid;
+				width: 1px;
+			}
+
+			&:hover {
+				color: the_color( white );
+				background: { color: the_color( orange, mostly-desaturated-dark ); }
+			}
+		}
+	}
+}

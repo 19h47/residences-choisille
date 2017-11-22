@@ -6,6 +6,8 @@
 .Front-page {
 	min-height: 100%;
 
+	background: { color: the_color( cyan, very-dark-03 ); }
+
 	/**
 	 * Contact
 	 *
@@ -24,8 +26,8 @@
 		&.is-on-the-left {
 			transform: translate3d( -1px, 0, 0 );
 		}
-		
-		@at-root 
+
+		@at-root
 			.panel-left--is-open &.is-on-the-left,
 			.panel-right--is-open &.is-on-the-right,
 			&:hover {
@@ -59,30 +61,30 @@
 		 * @uses .Front-page-contact .icon
 		 */
 		.icon {
-			@extend 
-				%display-xs-inline-block, 
-				%vertical-align-middle, 
+			@extend
+				%display-xs-inline-block,
+				%vertical-align-middle,
 				%Transition-ease;
-			
+
 			@include size( 50px );
 			@include padding( top 12px right 12px bottom 12px left 12px );
-			@include margin( 
-				bottom $grid-gutter-width / 2 
+			@include margin(
+				bottom $grid-gutter-width / 2
 			);
-			
+
 			border: {
 				color: currentColor;
 				style: solid;
 				width: 1px;
 			}
 
-			@at-root #{ $this }.is-on-the-right .icon {
-				transform: translate3d( -1px, 0, 0 );
-			}
+			// @at-root #{ $this }.is-on-the-right .icon {
+			// 	transform: translate3d( -1px, 0, 0 );
+			// }
 
-			@at-root #{ $this }.is-on-the-left .icon {
-				transform: translate3d( 1px, 0, 0 );
-			}
+			// @at-root #{ $this }.is-on-the-left .icon {
+			// 	transform: translate3d( 1px, 0, 0 );
+			// }
 
 			@include from( 'md' ) {
 				@include margin( bottom 0 );
@@ -103,31 +105,31 @@
 		 * @uses .Front-page-contact .label
 		 */
 		.label {
-			@extend 
-				%display-xs-inline-block, 
-				%font-bold, 
-				%uppercase, 
-				%vertical-align-middle, 
+			@extend
+				%display-xs-inline-block,
+				%font-bold,
+				%uppercase,
+				%vertical-align-middle,
 				%Transition-ease;
 
 			@include size( calc( 100% - 50px ), 50px );
 			@include font( 14, 50 );
-			@include margin( 
+			@include margin(
 				top 0 /* $grid-gutter-width / 2 */
-				bottom $grid-gutter-width / 2 
+				bottom $grid-gutter-width / 2
 			);
 			@include padding( right 20px left 20px );
 			@include autoAlpha( 0 );
-			
+
 			border: {
 				color: currentColor;
 				style: solid;
 				width: 1px;
 			}
-			
+
 			@include from( 'md' ) {
 				@include margin( top 0 bottom 0 );
-				
+
 				width: auto;
 			}
 
@@ -146,27 +148,37 @@
 	/**
 	 * Links
 	 *
-	 * @uses .Front-page-contact
+	 * @uses .Front-page-links
 	 */
 	&-links {
 		color: the_color( cyan, very-dark );
 
+		@at-root .panel-left--is-open [data-position="left"] {
+			background: { color: the_color( green, light-grayish-lime ); }
+			color: currentColor;
+		}
+		@at-root .panel-right--is-open [data-position="right"] {
+			background: { color: the_color( green, light-grayish-lime ); }
+			color: currentColor;
+
+		}
+
 		a {
-			@extend 
-				%font-title, 
-				%font-bold, 
-				%uppercase, 
-				%display-xs-block, 
-				%display-md-inline-block, 
+			@extend
+				%font-title,
+				%font-bold,
+				%uppercase,
+				%display-xs-block,
+				%display-md-inline-block,
 				%Transition-ease;
 
 			@include font( 24, 34, 50 );
-			@include margin( 
-				top $grid-gutter-width / 2 
-				bottom $grid-gutter-width / 2 
+			@include margin(
+				top $grid-gutter-width / 2
+				bottom $grid-gutter-width / 2
 			);
 			@include padding( top 10px right 20px bottom 10px left 20px );
-			
+
 			border: {
 				color: the_color( green, light-grayish-lime );
 				style: solid;
@@ -174,7 +186,7 @@
 			}
 			color: the_color( green, light-grayish-lime );
 			width: 100%;
-			
+
 			&:first-child { @include margin( left 0 ); }
 			&:last-child { @include margin( right 0 ); }
 
@@ -208,19 +220,19 @@
 
 			.panel {
 				@extend %Transition-ease;
-				
+
 				fill: transparent;
 
 				&.right { transform: translate3d( #{ $grid-gutter-width }, 0, 0 ); }
 				&.left { transform: translate3d( -#{ $grid-gutter-width }, 0, 0 ); }
 
 				@at-root .panel-right--is-open &.right {
-					fill: #0A322D;
+					fill: the_color( cyan, very-dark-03 );
 					transform: translate3d( 0, 0, 0 );
 				}
 
 				@at-root .panel-left--is-open &.left {
-					fill: #0A322D;
+					fill: the_color( cyan, very-dark-03 );
 					transform: translate3d( 0, 0, 0 );
 				}
 			}
@@ -247,14 +259,15 @@
 	 *
 	 * @uses .Front-page-content
 	 */
-	&-content { 
+	&-content {
 		// @extend %Pointer-events-none;
-		@include margin( top 100px bottom 100px ); 
+		@include margin( top 100px );
+		@include padding( bottom 100px );
 
-		@at-root 
+		@at-root
 			.panel-left--is-open &,
 			.panel-right--is-open & {
-			// @extend %Pointer-events-auto;	
+			// @extend %Pointer-events-auto;
 		}
 	}
 }

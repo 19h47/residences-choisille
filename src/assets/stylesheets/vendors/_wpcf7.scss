@@ -44,7 +44,11 @@
 		background-color: the_color( cyan, very-dark-01 );
 		border: 2px solid transparent;
 		color: the_color( white );
-		width: auto;
+		width: 100%;
+
+		@include from( 'md' ) {
+			width: auto;
+		}
 
 		&:hover {
 			background-color: transparent;

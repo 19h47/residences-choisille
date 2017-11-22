@@ -10,7 +10,13 @@ class Home {
 			left: null,
 		};
 
+		this.positions = [];
+		document.querySelectorAll('.js-home-link').forEach((link) => {
+			this.positions.push(link.dataset.position);
+		});
+
 		this.setupEvents();
+		this.open('left', 'false');
 	}
 
 
@@ -37,11 +43,11 @@ class Home {
 		console.info('Home.toggle');
 
 		if (e.type === 'mouseleave') {
-			return Home.close(e);
+			return this.close(e.currentTarget.dataset.position, e.currentTarget.dataset.open);
 		}
 
 		if (e.type === 'mouseenter') {
-			return Home.open(e);
+			return this.open(e.currentTarget.dataset.position, e.currentTarget.dataset.open);
 		}
 
 		return false;
@@ -50,36 +56,49 @@ class Home {
 
 	/**
 	 * Home.open
+	 *
+	 * @param str 	position
+	 * @param bol	state
 	 */
-	static open(e) {
+	open(position, state) {
 		console.info('Home.open');
 
-		if (e.currentTarget.dataset.open === true) {
+		if (state === true) {
 			return;
 		}
 
-		e.currentTarget.dataset.open = true;
+		// state = true;
+		this.positions.forEach((p) => {
+			$body.removeClass(`panel-${p}--is-open`);
+		});
 
-		return $body
-			.addClass(`panel-${e.currentTarget.dataset.position}--is-open`)
+		$body
+			.addClass(`panel-${position}--is-open`)
 			.trigger('open.home');
 	}
 
 
 	/**
 	 * Home.close
+	 *
+	 * @param str 	position
+	 * @param bol	state
 	 */
-	static close(e) {
+	close(position, state) {
 		console.info('Home.close');
 
-		if (e.currentTarget.dataset.open === false) {
+		if (state === false) {
 			return;
 		}
 
-		e.currentTarget.dataset.open = false;
+		// state = false;
 
-		return $body
-			.removeClass(`panel-${e.currentTarget.dataset.position}--is-open`)
+		this.positions.forEach((p) => {
+			$body.removeClass(`panel-${p}--is-open`);
+		});
+
+		$body
+			.removeClass(`panel-${position}--is-open`)
 			.trigger('close.home');
 	}
 }
