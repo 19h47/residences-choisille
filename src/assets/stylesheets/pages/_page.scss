@@ -78,11 +78,13 @@
 			@extend %display-xs-inline-block, %vertical-align-middle;
 			@include margin( top 25px bottom 25px );
 
+			@include size( 100%, auto );
+
 			max-width: 100%;
 
-			@include from( 'md' ) {
-				width: 100%;
-			}
+			// @include from( 'md' ) {
+			// 	width: 100%;
+			// }
 		}
 
 
@@ -93,7 +95,11 @@
 		 */
 		&__items {
 			@extend %list-unstyled, %text-xs-right;
-			@include margin( top 25px bottom 25px );
+			@include margin( top 0 bottom 0 );
+
+			@include from( 'md' ) {
+				@include margin( top 25px bottom 25px );
+			}
 		}
 
 
@@ -129,7 +135,7 @@
 			 * @uses .Page-menu__item--nous-contacter
 			 */
 			&--nous-contacter {
-				@extend %display-xs-inline-block, %text-xs-center;
+				@extend %display-xs-none, %display-md-inline-block, %text-xs-center;
 
 				color: the_color( cyan, very-dark );
 

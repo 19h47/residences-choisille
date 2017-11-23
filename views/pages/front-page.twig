@@ -13,21 +13,23 @@
 {% block header %}
 	{{ parent() }}
 
-	<header class="Site-header Site-container js-home-header">
-		<div class="row hidden-xs hidden-sm">
-			<div class="col-xs-12 col-md-6 text-xs-left">
+	<header class="Site-header {# Site-container #} js-home-header">
+		{# <div class="row hidden-xs hidden-sm"> #}
+			{# <div class="col-xs-12 col-md-6 text-xs-left"> #}
 
-				{%
+				{% spaceless %}
+
+{# 				{%
 					include 'components/front-page-contact.twig'
 					with {
 						link: ehpad.contact,
 						position: 'left',
 						class: 'js-home-contact'
 					}
-				%}
+				%} #}
 
-			</div>
-			<div class="col-xs-12 col-md-6 text-xs-right">
+			{# </div> #}
+			{# <div class="col-xs-12 col-md-6 text-xs-right"> #}
 
 				{%
 					include 'components/front-page-contact.twig'
@@ -38,8 +40,10 @@
 					}
 				%}
 
-			</div>
-		</div>
+				{% endspaceless %}
+
+			{# </div> #}
+		{# </div> #}
 
 	</header>
 

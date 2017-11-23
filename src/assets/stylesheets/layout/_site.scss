@@ -9,17 +9,17 @@
 	 * Site container
 	 *
 	 * The fluid container of the grid
-	 * 
+	 *
 	 * @uses .Site-container
 	 */
 	&-container {
 		@extend %position-xs-relative;
-		@include padding( 
+		@include padding(
 			right $grid-gutter-width
 			left $grid-gutter-width
 		);
 		@include margin( top 0 right auto bottom 0 left auto );
-		
+
 		max-width: $container-width;
 
 		@at-root .Front-page & { z-index: 2; }
@@ -35,7 +35,7 @@
 
 		@at-root .Front-page & {
 			@extend %position-xs-relative;
-			
+
 			min-height: 100vh;
 			background: {
 				image: url( '#{ map-get( $directories, jpg ) }front-page-background.jpg' );
@@ -59,10 +59,14 @@
 	 * @uses .Site-header
 	 */
 	&-header {
-		@at-root .Front-page & {
-			@include padding( top 50px );
+		@extend %position-xs-relative, %text-xs-right;
 
-			max-width: 1100px;
+		z-index: 2;
+
+		@at-root .Front-page & {
+			@include padding( top 50px right 50px left 50px );
+
+			// max-width: 1100px;
 		}
 	}
 
