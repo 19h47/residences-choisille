@@ -194,7 +194,7 @@
 			<div class="row Residence-services__wrapper">
 
 				<div
-					class="col-xs-12 col-md-offset-1{{ layout.services == 'right' ? ' col-md-push-5 col-md-6' : ' col-md-5'  }}"
+					class="col-xs-12 {{ layout.services == 'right' ? ' col-md-push-6 col-md-6' : ' col-md-6'  }}"
 				>
 
 					<ul class="Residence-services__images js-residence-services-image">
@@ -209,7 +209,7 @@
 
 				</div>
 
-				<div class="col-xs-12 col-md-5{{ layout.services == 'right' ? ' col-md-pull-7' :  ' col-md-offset-1' }}">
+				<div class="col-xs-12 col-md-5{{ layout.services == 'right' ? ' col-md-pull-6' :  ' col-md-offset-1' }}">
 
 					<ul class="Residence-services__content js-residence-services-content">
 
@@ -324,6 +324,7 @@
 	{% endif %}
 
 
+	{# Actuality #}
 	{% if layout.actuality %}
 
 	<div id="notre-actualite" class="Residence-blog text-xs-center">
