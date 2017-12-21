@@ -23,10 +23,10 @@ const production = process.env.NODE_ENV === 'production';
 
 // config object
 let config = {
-	
+
 	 // entry file
 	entry: ['./src/index.js', './src/assets/stylesheets/styles.scss'],
-	
+
 	output: {
 
 		// output path
@@ -41,9 +41,9 @@ let config = {
 
 		// Automatically resolve certain extensions
 		extensions: ['.js', '.jsx', '.json', '.scss', '.css', '.jpeg', '.jpg', '.gif', '.png'],
-		
+
 		// Create aliases
-		alias: { 
+		alias: {
 
 			// src/assets/images alias
 	      		images: path.resolve(__dirname, 'src/assets/img/')
@@ -59,7 +59,7 @@ let config = {
 
 		      	 // exclude the node_modules directory
 		      	exclude: /node_modules/,
-		      	
+
 		      	use: ['eslint-loader']
 	    	},
 	    	{
@@ -68,17 +68,17 @@ let config = {
 
 		      	 // exclude the node_modules directory
 		      	exclude: /node_modules/,
-		      	
+
 		      	 // use this (babel-core) loader
 		      	use: ['babel-loader']
 	    	},
-	    	{ 
-	    	    test: /\.svg$/, 
-	    	    loader: 'file-loader' 
+	    	{
+	    	    test: /\.svg$/,
+	    	    loader: 'file-loader'
 	 	 	},
 	    	{
 		    	// files ending with .scss
-		    	test: /\.scss$/, 
+		    	test: /\.scss$/,
 
 		    	 // call our plugin with extract method
 		    	use: ExtractTextWebpackPlugin.extract({
@@ -95,7 +95,7 @@ let config = {
 		        test: /\.(woff2?|eot|ttf|otf|woff)?$/,
 		        loader: 'file-loader'
           	},
-          	{	
+          	{
           		// all files ending with .jsx
           		test: /\.jsx$/,
 
@@ -112,8 +112,8 @@ let config = {
 		    	// `brew update` (https://brew.sh/)
             	test: /\.(jpe?g|png|gif|svg)$/i,
             	loaders: [
-            		'file-loader?context=src/assets/img/[ext]/[name].[ext]', 
-            		{  
+            		'file-loader?context=src/assets/img/[ext]/[name].[ext]',
+            		{
 		    		// images loader
 	              		loader: 'image-webpack-loader',
 	              		query: {
@@ -174,7 +174,7 @@ let config = {
   	// },
 
   	// enable devtool for better debugging experience
-  	devtool: 'eval-source-map'
+  	devtool: production ? false : 'eval-source-map'
 }
 
 
@@ -183,7 +183,7 @@ module.exports = config;
 
 if (production) {
 
-	module.exports.plugins.push(			
+	module.exports.plugins.push(
 		new UglifyJs()
 	);
 
