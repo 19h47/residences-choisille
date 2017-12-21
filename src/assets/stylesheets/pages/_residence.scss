@@ -144,8 +144,8 @@
 	 */
 	&-accommodation {
 		@extend %position-xs-relative;
-		@include padding( top 90px bottom 90px );
-		@include margin( top 90px );
+		@include padding( bottom 90px );
+		// @include margin( top 90px );
 
 		background: { color: the_color( green, lime ); }
 		color: the_color( white );
@@ -157,10 +157,10 @@
 		}
 
 		@at-root .page-id-12 & {
-			@include margin( top 0 );
+			// @include margin( top 0 );
 
 			@include from( 'md' ) {
-				@include padding( bottom #{ ( 90 + 50 ) }px );
+				@include padding( top 90px bottom #{ ( 90 + 50 ) }px );
 			}
 		}
 
@@ -202,7 +202,11 @@
 		@include padding( top 90px );
 
 		@at-root .page-id-6 & {
-			@include padding( bottom 0 );
+			@include padding( bottom 90px );
+
+			@include from( 'md' ) {
+				@include padding( bottom 0 );
+			}
 		}
 
 		@at-root .page-id-12 & {
@@ -247,7 +251,7 @@
 		p { color: the_color( gray, very-dark ); }
 
 		&__item {
-			@include padding( top 90px );
+			// @include padding( top 90px );
 			@extend %text-xs-center;
 			h3 {
 				@extend %uppercase;
@@ -439,7 +443,7 @@
 	 */
 	&-apartments {
 		@include margin( top 90px );
-		@include padding( bottom 90px );
+		// @include padding( bottom 90px );
 
 		h2 {
 			@extend %font-extrablack, %uppercase, %margin-xs-top-0;
@@ -462,7 +466,11 @@
 		 *
 		 * @uses .Residence-apartments__header
 		 */
-		&__header { @include margin( bottom 90px ); }
+		&__header {
+			@include from( 'md' ) {
+				@include margin( bottom 90px );
+			}
+		}
 
 
 		/**
@@ -602,11 +610,15 @@
 
 
 		&__catchphrase {
-			@include margin( top 90px bottom 90px );
+			@include margin( top 90px bottom 0 );
 			@extend %font-bold, %font-style-italic, %text-xs-center;
 			@include font( 28.01, 34.01 );
 
 			color: the_color( cyan, very-dark-03 );
+
+			@include from( 'md' ) {
+				@include margin( bottom 90px );
+			}
 		}
 	}
 

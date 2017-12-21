@@ -26,6 +26,8 @@
 
 		&#{ $this }-submit {
 			@extend %display-xs-block;
+			@include padding( top 6px right 20px bottom 6px left 20px );
+
 		}
 		&#{ $this }-not-valid {}
 	}
