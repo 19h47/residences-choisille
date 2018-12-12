@@ -16,12 +16,12 @@
 
 			<div class="col-xs-12 col-md-6 text-xs-center padding-md-right-0">
 				<a {{ ehpad.active ? 'class="is-active" ' }}href="{{ ehpad.permalink }}">
-					{{ ehpad.title }}
+					{{- ehpad.title -}}
 				</a>
 			</div>
 			<div class="col-xs-12 col-md-6 text-xs-center padding-md-left-0">
 				<a {{ rss.active ? 'class="is-active" ' }}href="{{ rss.permalink }}">
-					{{ rss.title }}
+					{{- rss.title -}}
 				</a>
 			</div>
 

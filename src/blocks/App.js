@@ -1,10 +1,10 @@
-import config from '../../config';
+import config from 'src/config';
 
 
 /**
  * App
  */
-class App {
+export default class App {
 	constructor() {
 		console.log('%c🔥 Moka Création x 19h47 🔥', 'background-color:#000;color:#fff;padding:0.5em 1em;');
 	}
@@ -15,7 +15,9 @@ class App {
 	static disableScroll() {
 		const documentElementScrollLeft = document.documentElement.scrollLeft;
 		const documentElementScrollTop = document.documentElement.scrollTop;
+		// eslint-disable-next-line
 		const pageXOffset = self.pageXOffset;
+		// eslint-disable-next-line
 		const pageYOffset = self.pageYOffset;
 		const bodyScrollLeft = document.body.scrollLeft;
 		const bodyScrollTop = document.body.scrollTop;
@@ -80,5 +82,3 @@ class App {
 		window.scrollTo(config.body.scroll.left, config.body.scroll.top);
 	}
 }
-
-export default App;

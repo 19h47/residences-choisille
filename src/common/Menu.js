@@ -1,4 +1,4 @@
-import App from './app';
+import App from 'Blocks/App';
 
 const $body = $('body');
 

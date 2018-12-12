@@ -1,202 +1,182 @@
-// https://medium.com/@wesharehoodies/simple-beginner-guide-for-webpack-2-0-from-scratch-part-v-495dba627718
-
-// webpack itself
-const webpack = require('webpack');
-
-// nodejs dependency when dealing with paths
 const path = require('path');
 
-// extract css into a dedicated file
-const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
-
-// "uglify" our output js code
-const UglifyJs = require('uglifyjs-webpack-plugin');
-
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const Manifest = require('webpack-manifest-plugin');
-const Clean = require('clean-webpack-plugin');
-const Html = require('html-webpack-plugin');
-const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
-
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
+const WebpackNotifier = require('webpack-notifier');
 
 const production = process.env.NODE_ENV === 'production';
 
-
-// config object
-let config = {
-
-	 // entry file
-	entry: ['./src/index.js', './src/assets/stylesheets/styles.scss'],
-
+module.exports = {
+	watch: production ? false : true,
 	output: {
-
-		// output path
-		path: path.resolve(__dirname, 'public'),
-
-		 // output filename
-		filename: production ? 'bundle.[chunkhash:8].js' : 'bundle.js'
+		filename: production ? '[name].[chunkhash:8].js' : '[name].js',
 	},
-
-	// These options change how modules are resolved
 	resolve: {
-
-		// Automatically resolve certain extensions
-		extensions: ['.js', '.jsx', '.json', '.scss', '.css', '.jpeg', '.jpg', '.gif', '.png'],
-
-		// Create aliases
 		alias: {
-
-			// src/assets/images alias
-	      		images: path.resolve(__dirname, 'src/assets/img/')
-	    	}
+			'@': path.resolve(__dirname),
+			src: path.resolve(__dirname, 'src'),
+			Blocks: path.resolve(__dirname, 'src/blocks'),
+			Common: path.resolve(__dirname, 'src/common'),
+			Datas: path.resolve(__dirname, 'src/js/datas'),
+			Pages: path.resolve(__dirname, 'src/js/pages'),
+			Transitions: path.resolve(__dirname, 'src/js/transitions'),
+			Utils: path.resolve(__dirname, 'src/js/utils'),
+			png: path.resolve(__dirname, 'src/img/png'),
+			jpg: path.resolve(__dirname, 'src/img/jpg'),
+			svg: path.resolve(__dirname, 'src/img/svg'),
+			videos: path.resolve(__dirname, 'src/videos'),
+			icons: path.resolve(__dirname, 'src/icons'),
+			js: path.resolve(__dirname, 'src/js'),
+			stylesheets: path.resolve(__dirname, 'src/stylesheets'),
+		}
 	},
 	module: {
-	    rules: [
-	    	{
-	    		enforce: 'pre',
+		rules: [{
+			enforce: 'pre',
+			test: /\.js$/,
+			exclude: /node_modules/,
+			use: ['eslint-loader']
+		},
+		{
+			test: /\.js$/,
+			exclude: /node_modules/,
+			use: ['babel-loader']
+		},
+		{
+			test: /\.scss$/,
+			exclude: /node_modules/,
+			use: [
+				MiniCssExtractPlugin.loader,
+				{
+					loader: 'css-loader',
+					options: {
+						sourceMap: production ? false : true
+					}
+				},
+				{
+					loader: 'postcss-loader',
+					options: {
+						sourceMap: production ? false : true
+					}
+				},
+				{
+					loader: 'sass-loader',
+					options: {
+						sourceMap: production ? false : true
+					}
+				}
+			]
+		},
+		{
+			test: /\.(woff2?|eot|ttf|otf|woff|svg)?$/,
+			exclude: [/img/, /icons/],
+			use: [{
+				loader: 'file-loader',
+				options: {
+					name: '[name].[ext]',
+					outputPath: 'fonts'
+				},
 
-		    	// files ending with .js
-		      	test: /\.js$/,
-
-		      	 // exclude the node_modules directory
-		      	exclude: /node_modules/,
-
-		      	use: ['eslint-loader']
-	    	},
-	    	{
-		    	// files ending with .js
-		      	test: /\.js$/,
-
-		      	 // exclude the node_modules directory
-		      	exclude: /node_modules/,
-
-		      	 // use this (babel-core) loader
-		      	use: ['babel-loader']
-	    	},
-	    	{
-	    	    test: /\.svg$/,
-	    	    loader: 'file-loader'
-	 	 	},
-	    	{
-		    	// files ending with .scss
-		    	test: /\.scss$/,
-
-		    	 // call our plugin with extract method
-		    	use: ExtractTextWebpackPlugin.extract({
-
-		    		// use these loader, order is important, from right to left
-		    		use: ['css-loader', 'postcss-loader', 'sass-loader'],
-
-		    		// fallback for any CSS not extracted
-		    		fallback: 'style-loader'
-
-		    	})
-	    	},
-          	{
-		        test: /\.(woff2?|eot|ttf|otf|woff)?$/,
-		        loader: 'file-loader'
-          	},
-          	{
-          		// all files ending with .jsx
-          		test: /\.jsx$/,
-
-          		// use the babel-loader for all .jsx files
-          		loader: 'babel-loader',
-
-          		// exclude searching for files in the node_modules directory
-          		exclude: /node_modules/
-          	},
-          	{
-		    	// Don't forget to install libpng `brew install libpng`
-		    	// Homebrew is the package manager of MacOS
-		    	// Maybe you need to update Homebrew before installing libpng
-		    	// `brew update` (https://brew.sh/)
-            	test: /\.(jpe?g|png|gif|svg)$/i,
-            	loaders: [
-            		'file-loader?context=src/assets/img/[ext]/[name].[ext]',
-            		{
-		    		// images loader
-	              		loader: 'image-webpack-loader',
-	              		query: {
-						mozjpeg: {
-							progressive: true
-						},
-						gifsicle: {
-							interlaced: false
-						},
-						optipng: {
-							optimizationLevel: 4
-						},
-						pngquant: {
-							quality: '75-90',
-							speed: 3
-						},
-	          		},
-	        	}],
-        		exclude: /node_modules/,
-        		include: __dirname
-          	}
-		]
-  	},
-
-  	// Plugins
-  	plugins: [
-
-  		// call the ExtractTextWebpackPlugin constructor and name our css file
-  		new ExtractTextWebpackPlugin({
-  			filename: production ? 'global.[chunkhash:8].css' : 'global.css'
-  		}),
-
-		// new Html()
-		new SVGSpritemapPlugin({
-		   src: path.resolve(__dirname, 'src/assets/img/svg/icons/*.svg' ),
-		   filename : 'icons.svg',
-		   prefix : '',
-		   svgo : { removeTitle : true }
-		   // path: './resources/assets/svg/**/*.svg'
-		})
-  	],
-
-  	// devServer: {
-
-  	// 	// A directory or URL to serve HTML content from
-  	// 	contentBase: path.resolve(__dirname, 'public'),
-
-  	// 	// fallback to /index.html for single Page Application
-  	// 	historyApiFallback: true,
-
-  	// 	// inline mode (set to false to disable including client scripts) (like livereload)
-  	// 	inline: true,
-
-  	// 	// open default browser while launching
-  	// 	open: false,
-
-  	// 	overlay: true
-  	// },
-
-  	// enable devtool for better debugging experience
-  	devtool: production ? false : 'eval-source-map'
-}
-
-
-module.exports = config;
-
-
-if (production) {
-
-	module.exports.plugins.push(
-		new UglifyJs()
-	);
-
-	module.exports.plugins.push(
-		new Manifest()
-	);
-
-	module.exports.plugins.push(
-		new Clean(
-			['public'], {
-				root: path.resolve('./public '),
-				dry: false
+			}]
+		},
+		{
+			test: /\.svg$/,
+			exclude: [/img/, /fonts/],
+			use: [{
+				loader: 'svg-sprite-loader',
+				options: {
+					spriteFilename: 'icons.svg',
+					extract: true
+				}
+			},
+			'svg-transform-loader',
+			'svgo-loader'
+		]},
+		{
+			test: /\.svg$/,
+			exclude: [/fonts/, /icons/],
+			use: [{
+				loader: 'file-loader',
+				options: {
+					outputPath: 'img/svg'
+				}
+			},
+			{
+				loader: 'svgo-loader',
+				options: {
+					plugins: [{
+						removeTitle: true
+					},
+					{
+						convertColors: {
+							shorthex: false
+						}
+					},
+					{
+						convertPathData: false
+					}]
+				}
+			}]
+		},
+		{
+			test: /\.(gif|png|jpe?g)$/i,
+			use: [{
+				loader: 'file-loader',
+				options: {
+					outputPath: 'img/',
+					name: '[ext]/[hash].[ext]'
+				}
+			},
+			{
+				loader: 'image-webpack-loader',
+				options: {
+					mozjpeg: {
+						progressive: true,
+						quality: 65
+					},
+					optipng: {
+						enabled: false
+					},
+					pngquant: {
+						quality: '65-90',
+						speed: 4
+					},
+					gifsicle: {
+						interlaced: false
+					}
+				}
+			}]
+		},
+		{
+			test: /\.(mp4|webm|ogg|mp3|wav|flac|aac|ogv)(\?.*)?$/,
+			use: [{
+				loader: 'url-loader',
+				options: {
+					limit: 100000,
+					name: '[name].[ext]',
+					outputPath: 'videos/',
+				}
+			}]
+		}
+	]},
+	plugins: [
+		new MiniCssExtractPlugin({
+			filename: production ? 'main.[chunkhash:8].css' : 'main.css'
+		}),
+		new CleanWebpackPlugin(['dist']),
+		new CopyWebpackPlugin([
+			{
+				from: 'src/favicons',
+				to: 'favicons'
 			}
-		)
-	);
+		]),
+		new ManifestPlugin(),
+		new SpriteLoaderPlugin({ plainSprite: true }),
+		new WebpackNotifier(),
+	],
+	devtool: production ? false : 'source-map',
 }

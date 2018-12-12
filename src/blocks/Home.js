@@ -24,7 +24,8 @@ class Home {
 	 * Home.setupEvents
 	 */
 	setupEvents() {
-		console.info('Home.setupEvents');
+		// console.info('Home.setupEvents');
+
 		$(document)
 			.on('mouseenter mouseleave', '.js-home-link', Home.toggle.bind(this))
 			.on('mouseenter mouseleave', '.js-home-contact', Home.toggle.bind(this))
@@ -40,7 +41,7 @@ class Home {
 	 * Home.toggle
 	 */
 	static toggle(e) {
-		console.info('Home.toggle');
+		// console.info('Home.toggle');
 
 		if (e.type === 'mouseleave') {
 			return this.close(e.currentTarget.dataset.position, e.currentTarget.dataset.open);
@@ -61,7 +62,7 @@ class Home {
 	 * @param bol	state
 	 */
 	open(position, state) {
-		console.info('Home.open');
+		// console.info('Home.open');
 
 		if (state === true) {
 			return;
@@ -85,7 +86,7 @@ class Home {
 	 * @param bol	state
 	 */
 	close(position, state) {
-		console.info('Home.close');
+		// console.info('Home.close');
 
 		if (state === false) {
 			return;
