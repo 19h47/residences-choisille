@@ -52,35 +52,32 @@
 		<div class="row">
 			<div class="col-xs-12 col-md-4">
 				<div class="Page-contact__address">
-					<img src="{{ manifest['img/svg/phone.svg'] }}" alt="" width="20" height="30" />
+					<img src="{{ manifest['img/svg/phone.svg'] }}" alt="Phone" width="20" height="30" />
 
 					<h3>Téléphone</h3>
 					<p>
-						Tél. {{ post.phone }}<br>
-						Fax. {{ post.fax }}
+						Tél. {{ post.phone -}}<br>
+						Fax. {{ post.fax -}}
 					</p>
-
 				</div>
 			</div>
+
 			<div class="col-xs-12 col-md-4">
 				<div class="Page-contact__address">
-					<img src="{{ manifest['img/svg/marker.svg'] }}" alt="" width="25" height="35" />
-
+					<img src="{{ manifest['img/svg/marker.svg'] }}" alt="Marker" width="25" height="35" />
 					<h3>Adresse</h3>
 					<p>{{- post.address | nl2br -}}</p>
-
 				</div>
 			</div>
+
 			<div class="col-xs-12 col-md-4">
 				<div class="Page-contact__address">
-					<img src="{{ manifest['img/svg/mail.svg'] }}" alt="" width="30" height="20" />
-
+					<img src="{{ manifest['img/svg/mail.svg'] }}" alt="Mail" width="30" height="20" />
 					<h3>Email</h3>
-					<p>
-						{{ post.email }}
-					</p>
+					<p>{{- post.email -}}</p>
 				</div>
 			</div>
+
 		</div>
 	</div>
 

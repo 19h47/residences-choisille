@@ -1,7 +1,8 @@
 {#
-	/**
-	 * /views/index
-	 */
+
+@file views/index
+@author Jérémy Levron <levronjeremy@19h47.fr> (http://19h47.fr)
+
 #}
 
 {# Header #}
@@ -11,7 +12,17 @@
 
 
 {# Content #}
-{% block content %}{% endblock %}
+{% block content %}
+	<div class="Site-container Page-recruitment__content">
+		<div class="row">
+			<div class="col-xs-12 col-md-10 col-md-offset-1">
+
+				{{- post.content -}}
+
+			</div>
+		</div>
+	</div>
+{% endblock %}
 
 
 {# Footer #}

@@ -22,15 +22,7 @@
 
 	{% include 'partials/page-title.twig' with { title: post.post_title, class: 'text-xs-center' } %}
 
-	<div class="Site-container Page-recruitment__content">
-		<div class="row">
-			<div class="col-xs-12 col-md-10 col-md-offset-1">
-
-				{{ post.content }}
-
-			</div>
-		</div>
-	</div>
+	{{ parent() }}
 
 	<div class="Site-container">
 		<div class="row">
@@ -46,8 +38,6 @@
 			</div>
 		</div>
 	</div>
-
-
 
 {% endblock %}
 

@@ -1,0 +1,100 @@
+{
+    "key": "group_5a103886c487a",
+    "title": "Contact",
+    "fields": [
+        {
+            "key": "field_5a10388b8b61b",
+            "label": "Téléphone",
+            "name": "phone",
+            "type": "text",
+            "instructions": "Indiquer le numéro de téléphone de l'établissement",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Numéro de téléphone",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5a1038b28b61c",
+            "label": "Fax",
+            "name": "fax",
+            "type": "text",
+            "instructions": "Indiquer le numéro de fax de l'établissement",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Numéro de fax",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5a1038d38b61d",
+            "label": "Adresse",
+            "name": "address",
+            "type": "textarea",
+            "instructions": "Indiquer l'adresse de l'établissement",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Adresse de l'établissement",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_5a1039078b61e",
+            "label": "Adresse mail",
+            "name": "email",
+            "type": "text",
+            "instructions": "Indiquer l'adresse mail de l'établissement",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Mail",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates\/contact.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "Options de la page Contact",
+    "modified": 1544888270
+}

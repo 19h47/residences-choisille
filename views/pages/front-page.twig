@@ -13,38 +13,27 @@
 {% block header %}
 	{{ parent() }}
 
-	<header class="Site-header {# Site-container #} js-home-header">
-		{# <div class="row hidden-xs hidden-sm"> #}
-			{# <div class="col-xs-12 col-md-6 text-xs-left"> #}
+	<header class="Site-header js-home-header">
+		{% spaceless %}
 
-				{% spaceless %}
+		{# {%
+			include 'components/front-page-contact.twig'
+			with {
+				link: ehpad.contact,
+				position: 'left',
+				class: 'js-home-contact'
+			}
+		%} #}
+		{%
+			include 'components/front-page-contact.twig'
+			with {
+				link: rss.contact,
+				position: 'right',
+				class: 'js-home-contact'
+			}
+		%}
 
-{# 				{%
-					include 'components/front-page-contact.twig'
-					with {
-						link: ehpad.contact,
-						position: 'left',
-						class: 'js-home-contact'
-					}
-				%} #}
-
-			{# </div> #}
-			{# <div class="col-xs-12 col-md-6 text-xs-right"> #}
-
-				{%
-					include 'components/front-page-contact.twig'
-					with {
-						link: rss.contact,
-						position: 'right',
-						class: 'js-home-contact'
-					}
-				%}
-
-				{% endspaceless %}
-
-			{# </div> #}
-		{# </div> #}
-
+		{% endspaceless %}
 	</header>
 
 {% endblock %}
@@ -52,17 +41,13 @@
 
 {% block content %}
 
-
 	<div class="Site-container Front-page-content js-home-content">
 		<div class="row">
-			<div class="col-xs-12 text-xs-center">
 
+			<div class="col-xs-12 text-xs-center">
 				<img class="Logo" src="{{ manifest['img/svg/logo.svg'] }}" alt="" />
 
 				<p class="Front-page-baseline">Seniors ? Trouvez la solution qui vous correspond.</p>
-
-
-
 			</div>
 
 			<div class="col-xs-12 text-xs-center">
@@ -76,18 +61,14 @@
 						href="{{ ehpad.permalink }}"
 						data-position="left"
 						data-open="false"
-					>
-						EHPAD
-					</a>
+					>EHPAD</a>
 
 					<a
 						class="js-home-link"
 						data-position="right"
 						data-open="false"
 						href="{{ rss.permalink }}"
-					>
-						Résidences Services Seniors
-					</a>
+					>Résidences Services Seniors</a>
 
 					{% endspaceless %}
 

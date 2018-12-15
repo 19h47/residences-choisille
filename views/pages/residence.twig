@@ -28,7 +28,7 @@
 				<div class="row">
 					<div class="col-xs-10 col-xs-offset-1 col-md-12 col-md-offset-0">
 						<img class="hidden-xs hidden-md" src="{{ manifest['img/png/residence-logo.png'] }}" alt="" />
-						<p>{{ layout.description }}</p>
+						<p>{{- layout.description -}}</p>
 					</div>
 				</div>
 			</div>
@@ -41,7 +41,7 @@
 			<li class="Residence-slider__item">
 				<img
 					src="{{ TimberImage( image ).src }}"
-					alt=""
+					alt="{{ TimberImage( image ).title }}"
 					width="{{ TimberImage( image ).width }}"
 					height="{{ TimberImage( image ).height }}"
 				/>
@@ -124,7 +124,7 @@
 
 		<img
 			src="{{ TimberImage( post.get_field( 'accomodation_image' ) ).src }}"
-			alt=""
+			alt="{{ layout.name == 'rss' ? 'Notre résidence' : 'Hébergement' }}"
 		/>
 
 		{% endif %}
@@ -155,10 +155,7 @@
 					{# </div> #}
 				</div>
 				<div class="col-xs-12 col-md-5 col-md-offset-1">
-					<h2>
-						Où se trouve la<br>
-						résidence ?
-					</h2>
+					<h2>Où se trouve la<br>résidence ?</h2>
 
 					<p>
 						Idéalement située, vous bénéficiez d’une proximité avec les transports en communs (bus, tram) et de nombreux commerces.
@@ -323,9 +320,8 @@
 
 	{% endif %}
 
-
 	{# Actuality #}
-	{% if layout.actuality %}
+	{% if layout.actuality and post.get_field( 'actuality_link' ) %}
 
 	<div id="notre-actualite" class="Residence-blog text-xs-center">
 
@@ -341,7 +337,14 @@
 						</em>
 					</p>
 
-					<a href="">notre actualité</a>
+					{% if post.get_field( 'actuality_link' ) %}
+					<a
+						href="{{ post.get_field( 'actuality_link' ).url }}"
+						{{- post.get_field( 'actuality_link' ).target ? ' target="_blank"' -}}
+					>
+						{{- post.get_field( 'actuality_link' ).title | default( 'Notre actualité' ) -}}
+					</a>
+					{% endif %}
 
 
 				</div>
