@@ -17,6 +17,10 @@
 
 		a {
 			color: the_color( cyan, very-dark-02 );
+
+			&:hover {
+				text-decoration: underline;
+			}
 		}
 
 		em {

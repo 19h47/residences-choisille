@@ -7,7 +7,7 @@
 
 {# Header #}
 {% block header %}
-	{% include 'header.twig' %}
+	{% include 'header.html.twig' %}
 {% endblock %}
 
 
@@ -16,9 +16,7 @@
 	<div class="Site-container Page-recruitment__content">
 		<div class="row">
 			<div class="col-xs-12 col-md-10 col-md-offset-1">
-
 				{{- post.content -}}
-
 			</div>
 		</div>
 	</div>
@@ -27,5 +25,5 @@
 
 {# Footer #}
 {% block footer %}
-	{% include 'footer.twig' %}
+	{% include 'footer.html.twig' %}
 {% endblock %}

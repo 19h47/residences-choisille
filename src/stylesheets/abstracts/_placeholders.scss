@@ -2,7 +2,7 @@
  * Placeholder position
  *
  * @uses    @extend %Position-{$proprerty}
- * @author  Jérémy Levron levronjeremy@19h47.fr
+ * @author  Jérémy Levron <jeremyjeremy@19h47.fr> (http://19h47.fr)
  */
 %Position {
 
@@ -36,7 +36,7 @@
  * Placeholder background 
  *
  * @uses    @extend %Background-{$proprerty}
- * @author  Jérémy Levron levronjeremy@19h47.fr
+ * @author  Jérémy Levron <jeremyjeremy@19h47.fr> (http://19h47.fr)
  */
 %Background {
 
@@ -85,7 +85,7 @@
  * Placeholder reset
  *
  * @uses    @extend %Reset-{$property}
- * @author  Jérémy Levron levronjeremy@19h47.fr
+ * @author  Jérémy Levron <jeremyjeremy@19h47.fr> (http://19h47.fr)
  */
 %Reset {
     
@@ -160,7 +160,7 @@
  * Placeholder hover 
  *
  * @uses    @extend %Hover-{$proprerty}
- * @author Jérémy Levron levronjeremy@19h47.fr
+ * @author Jérémy Levron <jeremyjeremy@19h47.fr> (http://19h47.fr)
  */
 %Hover {
 
@@ -185,7 +185,7 @@
  * Placeholder cursor
  *
  * @uses    @extend %Cursor-{$property}
- * @author  Jérémy Levron levronjeremy@19h47.fr
+ * @author  Jérémy Levron <jeremyjeremy@19h47.fr> (http://19h47.fr)
  */
 %Cursor {
 
@@ -214,7 +214,7 @@
  * Placeholder filter
  *
  * @uses @extend %Filter-{ $property }
- * @author Jérémy Levron levronjeremy@19h47.fr
+ * @author Jérémy Levron <jeremyjeremy@19h47.fr> (http://19h47.fr)
  */
 %Filter {
     
@@ -235,7 +235,7 @@
  * For each transition found in $transitions, create associate placeholder
  * 
  * @uses @extend %Transition-{ $property }
- * @author Jérémy Levron <levronjeremy@19h47.fr>
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
  * @see abstract/_variables.scss
  */
 @each $transition, $property in $transitions {
@@ -250,7 +250,7 @@
  * Placeholder pointer events
  *
  * @uses    @extend %Pointer-events-{ $property }
- * @author  Levron Jérémy <levronjeremy@19h47.fr>
+ * @author  Levron Jérémy <jeremylevron@19h47.fr> (http://19h47.fr)
  */
 $pointer-events-values: none auto;
 @each $value in $pointer-events-values {

@@ -12,7 +12,7 @@
  * @type nested map
  * @see http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
  * @see http://www.colorhexa.com/ to pickup color name
- * @author Jérémy Levron <levronjeremy@19h47.fr>
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
  */
 $color-variations: (
 
@@ -81,7 +81,7 @@ $font: (
 	 *
 	 * @uses map-get( $font, weights ) to retrieve font weight value
 	 * @type map
-	 * @author Jérémy Levron <levronjeremy@19h47.fr>
+	 * @author Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
 	 */
 	weights: (
 		extralight: 100,
@@ -174,7 +174,7 @@ $container-width: $container-width-unitless * 1px;
  * @uses map-get( $transitions, $key ) to retrieve directory value from map
  * @type map
  * @see http://easings.net/
- * @author Jérémy Levron <levronjeremy@19h47.fr>
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
  */
 $transitions: (
 	ease: .3s ease,
@@ -189,7 +189,7 @@ $transitions: (
  *
  * @uses map-get( $directories, $key ) to retrieve directory value from map
  * @type map
- * @author Jérémy Levron <levronjeremy@19h47.fr>
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
  */
 $directories: (
 	fonts: "../fonts/",
@@ -228,7 +228,7 @@ $slicer-breakpoints-settings: true;
  *
  * @uses map-get( $state-classes, $key ) to retrieve class name from map
  * @type map
- * @author Jérémy Levron <levronjeremy@19h47.fr>
+ * @author Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
  */
 $state-classes: (
 	menu-open: menu--is-open,

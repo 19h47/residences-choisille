@@ -45,3 +45,4 @@ sftp-config.json
 sftp-config.json.prod
 sftp-config.json.dev
 dist
+wpcs

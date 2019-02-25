@@ -1,32 +1,27 @@
 {#
-	/**
-	 * /partials/page-header
-	 *
-	 * @package WordPress
-	 * @subpackage rsdncschsll
-	 * @author Jérémy Levron levronjeremy@19h47.fr
-	 */
+
+Page header
+
+@package ResidencesChoisille
+@author Jérémy Levron <jeremyjeremy@19h47.fr> (http://19h47.fr)
+
 #}
 
 <header class="Page-header">
-
 	<div class="Site-container">
-
 		<div class="row">
 
 			<div class="col-xs-12 col-md-6 text-xs-center padding-md-right-0">
-				<a {{ ehpad.active ? 'class="is-active" ' }}href="{{ ehpad.permalink }}">
-					{{- ehpad.title -}}
+				<a {{ residence_ehpad.active ? 'class="is-active" ' }}href="{{ residence_ehpad.permalink }}">
+					{{- residence_ehpad.title -}}
 				</a>
 			</div>
 			<div class="col-xs-12 col-md-6 text-xs-center padding-md-left-0">
-				<a {{ rss.active ? 'class="is-active" ' }}href="{{ rss.permalink }}">
-					{{- rss.title -}}
+				<a {{ residences_services_seniors.active ? 'class="is-active" ' }}href="{{ residences_services_seniors.permalink }}">
+					{{- residences_services_seniors.title -}}
 				</a>
 			</div>
 
 		</div>
-
 	</div>
-
 </header>

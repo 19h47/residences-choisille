@@ -2,13 +2,11 @@
 /**
  * /views/pages/front-page
  *
- * @package 	WordPress
- * @subpackage 	19h47
- * @author 		Jérémy Levron levronjeremy@19h47.fr
+ * @package 	ResidencesChoisille
+ * @author 		Jérémy Levron <jeremylevron@19h47.fr> (http://19h47.fr)
  */
 #}
-{% extends 'index.twig' %}
-
+{% extends 'index.html.twig' %}
 
 {% block header %}
 	{{ parent() }}
@@ -17,17 +15,17 @@
 		{% spaceless %}
 
 		{# {%
-			include 'components/front-page-contact.twig'
+			include 'components/front-page-contact.html.twig'
 			with {
-				link: ehpad.contact,
+				link: residence_ehpad.contact,
 				position: 'left',
 				class: 'js-home-contact'
 			}
 		%} #}
 		{%
-			include 'components/front-page-contact.twig'
+			include 'components/front-page-contact.html.twig'
 			with {
-				link: rss.contact,
+				link: residences_services_seniors.contact,
 				position: 'right',
 				class: 'js-home-contact'
 			}
@@ -45,9 +43,12 @@
 		<div class="row">
 
 			<div class="col-xs-12 text-xs-center">
-				<img class="Logo" src="{{ manifest['img/svg/logo.svg'] }}" alt="" />
+				<img class="Logo" src="{{ manifest['img/svg/logo.svg'] }}" alt="{{ site.description }}" />
 
-				<p class="Front-page-baseline">Seniors ? Trouvez la solution qui vous correspond.</p>
+				<p class="Front-page-baseline">
+					{{- __( 'Seniors ? Trouvez la solution qui vous correspond.' ) -}}
+				</p>
+
 			</div>
 
 			<div class="col-xs-12 text-xs-center">
@@ -58,17 +59,17 @@
 
 					<a
 						class="js-home-link"
-						href="{{ ehpad.permalink }}"
+						href="{{ residence_ehpad.permalink }}"
 						data-position="left"
 						data-open="false"
-					>EHPAD</a>
+					>{{- __( 'EHPAD' ) -}}</a>
 
 					<a
 						class="js-home-link"
 						data-position="right"
 						data-open="false"
-						href="{{ rss.permalink }}"
-					>Résidences Services Seniors</a>
+						href="{{ residences_services_seniors.permalink }}"
+					>{{- __( 'Résidences Services Seniors' ) -}}</a>
 
 					{% endspaceless %}
 

@@ -1,12 +1,13 @@
 <?php
-
 /**
  * Template Name: Contact
+ *
+ * @package ResidencesChoisille
  */
-$context = Timber::get_context();
-$post = new TimberPost();
-$context['post'] = $post;
 
-$templates = array( 'pages/contact.twig' );
+$context         = Timber::get_context();
+$context['post'] = new TimberPost();
+
+$templates = array( 'pages/contact.html.twig' );
 
 Timber::render( $templates, $context );

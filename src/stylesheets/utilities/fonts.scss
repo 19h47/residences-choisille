@@ -87,7 +87,7 @@
      * Constructor for each letter-spacing
      *
      * @param list $letters-spacing
-     * @author Jérémy Levron levronjeremy@19h47.fr
+     * @author Jérémy Levron <jeremyjeremy@19h47.fr> (http://19h47.fr)
      */
     .letter-spacing-0 {
         letter-spacing: normal;
@@ -107,7 +107,7 @@
      * Construct each utilities classes for each font-size found in abstracts/variables
      *
      * @param list $font-sizes
-     * @author Jérémy Levron levronjeremy@19h47.fr
+     * @author Jérémy Levron <jeremyjeremy@19h47.fr> (http://19h47.fr)
      */
     @each $font-size in $font-sizes {
 
@@ -136,7 +136,7 @@
      *
      * @param $name             name of weight
      * @param $value            value of weight
-     * @author Jérémy Levron    <levronjeremy@19h47.fr>
+     * @author Jérémy Levron    <jeremylevron@19h47.fr> (http://19h47.fr)
      */
     @each $name, $value in map-get( $font, weights ) {
         
@@ -155,7 +155,7 @@
      * Font style
      *
      * @param   $font-style
-     * @author  Jérémy Levron    <levronjeremy@19h47.fr>
+     * @author  Jérémy Levron    <jeremylevron@19h47.fr> (http://19h47.fr)
      */
     @each $font-style in $font-styles {
         %font-style-#{ unquote( $font-style ) } {

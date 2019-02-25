@@ -97,6 +97,8 @@
 			@extend %list-unstyled, %text-xs-right;
 			@include margin( top 0 bottom 0 );
 
+			white-space: nowrap;
+
 			@include from( 'md' ) {
 				@include margin( top 25px bottom 25px );
 			}
